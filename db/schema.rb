@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_000421) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer "preparation_time"
+    t.time "preparation_time"
     t.string "name"
     t.text "type_of_cuisine"
     t.integer "number_of_portions"
