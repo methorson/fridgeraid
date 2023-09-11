@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     resources :ingredients, only: [:create]
   end
 
-  resources :recipes do
+  resources :recipes, only: [ :index ] do
     resources :reviews, only: [:create]
   end
-
   resources :ingredients, only: [:destroy]
   resources :reviews, only: [:destroy]
+  
 end
