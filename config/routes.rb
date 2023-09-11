@@ -3,9 +3,17 @@ Rails.application.routes.draw do
   get 'fridge_list/new'
   get 'fridge_list/edit'
   devise_for :users
-  root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: "pages#home"
+
+  resources :fridge_lists do
+    resources :ingredients, only: [:create]
+  end
+
+  resources :recipes do
+    resources :reviews, only: [:create]
+  end
+
+  resources :ingredients, only: [:destroy]
+  resources :reviews, only: [:destroy]
 end
