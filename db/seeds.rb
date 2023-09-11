@@ -12,7 +12,7 @@
 
 # Clear existing records (optional)
 Recipe.destroy_all
-Recipe.create(
+Recipe.create!(
   name: "Spaghetti Carbonara",
   description: "A classic Italian pasta dish with eggs, cheese, pancetta, and black pepper.",
   preparation_time: "30 minutes",
@@ -21,7 +21,7 @@ Recipe.create(
   number_of_portions: 2
 )
 
-Recipe.create(
+Recipe.create!(
   name: "Chicken Stir-Fry",
   description: "A quick and easy stir-fry with chicken, vegetables, and a savory sauce.",
   preparation_time: "20 minutes",
@@ -30,7 +30,7 @@ Recipe.create(
   number_of_portions: 4
 )
 
-Recipe.create(
+Recipe.create!(
   name: "Homemade Pizza",
   description: "Make your own pizza with fresh dough, tomato sauce, cheese, and your favorite toppings.",
   preparation_time: "45 minutes",
@@ -39,7 +39,7 @@ Recipe.create(
   number_of_portions: 3
 )
 
-Recipe.create(
+Recipe.create!(
   name: "Vegetable Curry",
   description: "A flavorful vegetable curry made with a blend of spices and coconut milk.",
   preparation_time: "40 minutes",
@@ -48,7 +48,7 @@ Recipe.create(
   number_of_portions: 4
 )
 
-Recipe.create(
+Recipe.create!(
   name: "Chocolate Chip Cookies",
   description: "Classic chocolate chip cookies with a soft and chewy texture.",
   preparation_time: "15 minutes",
@@ -57,7 +57,7 @@ Recipe.create(
   number_of_portions: 24
 )
 
-Recipe.create(
+Recipe.create!(
   name: "Caesar Salad",
   description: "A refreshing salad with crisp romaine lettuce, croutons, parmesan cheese, and Caesar dressing.",
   preparation_time: "15 minutes",
@@ -66,7 +66,7 @@ Recipe.create(
   number_of_portions: 2
 )
 
-Recipe.create(
+Recipe.create!(
   name: "Beef Tacos",
   description: "Tasty beef tacos with seasoned ground beef, salsa, lettuce, and cheese in soft tortillas.",
   preparation_time: "25 minutes",
@@ -75,7 +75,7 @@ Recipe.create(
   number_of_portions: 6
 )
 
-Recipe.create(
+Recipe.create!(
   name: "Mango Smoothie",
   description: "A tropical mango smoothie with ripe mangoes, yogurt, and a touch of honey.",
   preparation_time: "10 minutes",
