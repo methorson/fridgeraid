@@ -19,7 +19,7 @@ class FridgeListController < ApplicationController
   end
 
   def edit
-    #do we need this?
+    # do we need this?
   end
 
   def update
