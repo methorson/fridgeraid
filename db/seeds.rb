@@ -13,6 +13,25 @@
 # Clear existing records (optional)
 require "open-uri"
 
+maria = User.create!(
+  username: "Maria",
+  email:"maria@fridgeraid.com",
+  password:"123456"
+)
+
+marina = User.create!(
+  username: "Marina",
+  email:"marina@fridgeraid.com",
+  password:"123456"
+)
+
+ana = User.create!(
+  username: "Ana",
+  email:"ana@fridgeraid.com",
+  password:"123456"
+)
+puts "Users ( x )"
+
 Recipe.destroy_all
 
 file = URI.open("https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/76742_1416351942_0.jpg")

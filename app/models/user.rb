@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   validates :username, :email, :password, presence: true
   has_one_attached :photo
+  acts_as_favoritor
 end

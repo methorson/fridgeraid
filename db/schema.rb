@@ -43,8 +43,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_182918) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.string "favoritable_type", null: false
+    t.bigint "favoritable_id", null: false
+    t.string "favoritor_type", null: false
+    t.bigint "favoritor_id", null: false
+    t.string "scope", default: "favorite", null: false
+    t.boolean "blocked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["blocked"], name: "index_favorites_on_blocked"
+    t.index ["favoritable_id", "favoritable_type"], name: "fk_favoritables"
+    t.index ["favoritable_type", "favoritable_id", "favoritor_type", "favoritor_id", "scope"], name: "uniq_favorites__and_favoritables", unique: true
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
+    t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
+    t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor"
+    t.index ["scope"], name: "index_favorites_on_scope"
   end
 
   create_table "fridge_list_ingredients", force: :cascade do |t|
@@ -80,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_182918) do
   end
 
   create_table "recipes", force: :cascade do |t|
+    t.string "preparation_time"
     t.string "name"
     t.text "type_of_cuisine"
     t.integer "number_of_portions"
@@ -89,7 +103,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_182918) do
     t.integer "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "preparation_time"
   end
 
   create_table "reviews", force: :cascade do |t|
