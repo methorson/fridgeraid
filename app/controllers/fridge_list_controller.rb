@@ -14,20 +14,17 @@ class FridgeListController < ApplicationController
     if @fridge_list.save
       redirect_to @fridge_list
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-    # do we need this?
-  end
+  def edit end
 
   def update
-
     if @fridge_list.update(fridge_list_params)
       redirect_to @fridge_list
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
