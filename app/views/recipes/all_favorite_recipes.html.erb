@@ -3,7 +3,7 @@
     <h1 class="color-title"> Recipes:</h1>
   </div>
   <div class=" my-4">
-    <% @recipes.each do |recipe| %>
+    <% @favorite_recipes.each do |recipe| %>
       <div class="my-3 pb-3 actual-card border-bottom " style="">
         <div class="row g-0 ">
           <div class="col-md-4 ">
@@ -25,12 +25,13 @@
               <%# <p class="mx-2"> recipe.instruction </p> %>
             <%# </div> %>
               </div>
-              <div class="mx-2 d-flex justify-content-center align-items-end text-end" data-controller="favoritable" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
+               <div class="mx-2 d-flex justify-content-center align-items-end text-end" data-controller="favoritable" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
                   <i class="fa-solid fa-heart <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
 
                   <i class="fa-regular fa-heart <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
 
               </div>
+
               </div>
 
           </div>
