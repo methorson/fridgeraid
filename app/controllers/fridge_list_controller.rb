@@ -2,6 +2,9 @@ class FridgeListController < ApplicationController
   before_action :set_fridge_list, only: [:edit, :update, :destroy]
 
   def index
+    @fridge_list = FridgeList.all
+    @ingredient = Ingredient.all
+    @user = User.all
   end
 
   def new

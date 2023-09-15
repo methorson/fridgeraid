@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :fridge_lists #except: [:show]
+  resources :fridge_lists  #except: [:show]
 
   resources :recipes, only: [ :index ] do
     resources :reviews, only: [:create]
   end
-  resources :ingredients, only: [:create, :destroy]
+  resources :ingredients, only: [:destroy]
   resources :reviews, only: [:destroy]
 
 end
