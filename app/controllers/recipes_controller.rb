@@ -24,4 +24,9 @@ class RecipesController < ApplicationController
       @favorite_recipes << Recipe.find(favorite.favoritable_id)
     end
   end
+
+
+
+
+
 end
