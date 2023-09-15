@@ -1,0 +1,4 @@
+<%= simple_form_for @ingredient, fridge_lists_path do |f| %>
+  <%= f.association :ingredients, as: :check_boxes, collection: Ingredient.all %>
+  <%= f.button :submit, 'Add Fridge Item', class: 'btn btn-primary' %>
+<% end %>

@@ -12,6 +12,9 @@
 
 # Clear existing records (optional)
 require "open-uri"
+User.destroy_all
+Recipe.destroy_all
+Ingredient.destroy_all
 
 maria = User.create!(
   username: "Maria",
@@ -32,7 +35,6 @@ ana = User.create!(
 )
 puts "Users ( x )"
 
-Recipe.destroy_all
 
 file = URI.open("https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/76742_1416351942_0.jpg")
 carbonara = Recipe.create(
@@ -47,7 +49,7 @@ carbonara.photo.attach(io: file, filename: "carbonara.jpg", content_type: "image
 carbonara.save
 
 file = URI.open("https://www.thespruceeats.com/thmb/_EqZNGmAmcn1dWa2dzYL1DIFj60=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ultimate-chicken-stir-fry-694919-hero-01-5c280c5446e0fb0001fd7aa9.jpg")
-chicken = Recipe.create(
+chicken = Recipe.create!(
   name: "Chicken Stir-Fry",
   description: "A quick and easy stir-fry with chicken, vegetables, and a savory sauce.",
   preparation_time: "20 minutes",
@@ -59,7 +61,7 @@ chicken.photo.attach(io: file, filename: "chicken.jpg", content_type: "image/jpe
 chicken.save
 
 file = URI.open("https://therecipecritic.com/wp-content/uploads/2019/05/besthomemadepizzahero.jpg")
-pizza = Recipe.create(
+pizza = Recipe.create!(
   name: "Homemade Pizza",
   description: "Make your own pizza with fresh dough, tomato sauce, cheese, and your favorite toppings.",
   preparation_time: "45 minutes",
@@ -71,7 +73,7 @@ pizza.photo.attach(io: file, filename: "pizza.jpg", content_type: "image/jpeg")
 pizza.save
 
 file = URI.open("https://madhuban.co.uk/wp-content/uploads/2020/06/creamy-chickpea-and-vegetable-curry-104611-1-scaled-2560x1280.jpeg")
-curry = Recipe.create(
+curry = Recipe.create!(
   name: "Vegetable Curry",
   description: "A flavorful vegetable curry made with a blend of spices and coconut milk.",
   preparation_time: "40 minutes",
@@ -83,7 +85,7 @@ curry.photo.attach(io: file, filename: "curry.jpg", content_type: "image/jpeg")
 curry.save
 
 file = URI.open("https://i0.wp.com/www.livewellbakeoften.com/wp-content/uploads/2017/02/Chocolate-Chip-Cookies-2-1.jpg?w=745&ssl=1")
-cookies = Recipe.create(
+cookies = Recipe.create!(
   name: "Chocolate Chip Cookies",
   description: "Classic chocolate chip cookies with a soft and chewy texture.",
   preparation_time: "15 minutes",
@@ -95,7 +97,7 @@ cookies.photo.attach(io: file, filename: "cookies.jpg", content_type: "image/jpe
 cookies.save
 
 file = URI.open("https://www.platingsandpairings.com/wp-content/uploads/2018/03/vegan-caessar-salad-recipe-8-scaled.jpg")
-salad = Recipe.create(
+salad = Recipe.create!(
   name: "Caesar Salad",
   description: "A refreshing salad with crisp romaine lettuce, croutons, parmesan cheese, and Caesar dressing.",
   preparation_time: "15 minutes",
@@ -107,7 +109,7 @@ salad.photo.attach(io: file, filename: "salad.jpg", content_type: "image/jpeg")
 salad.save
 
 file = URI.open("https://littlesunnykitchen.com/wp-content/uploads/2021/01/Mexican-Shredded-Beef-17-1024x1536.jpg")
-tacos = Recipe.create(
+tacos = Recipe.create!(
   name: "Beef Tacos",
   description: "Tasty beef tacos with seasoned ground beef, salsa, lettuce, and cheese in soft tortillas.",
   preparation_time: "25 minutes",
@@ -119,7 +121,7 @@ tacos.photo.attach(io: file, filename: "tacos.jpg", content_type: "image/jpeg")
 tacos.save
 
 file = URI.open("https://www.happinessishomemade.net/wp-content/uploads/2021/08/Refreshing-Mango-Smoothie-Recipe.jpg")
-smoothie = Recipe.create(
+smoothie = Recipe.create!(
   name: "Mango Smoothie",
   description: "A tropical mango smoothie with ripe mangoes, yogurt, and a touch of honey.",
   preparation_time: "10 minutes",
@@ -130,4 +132,30 @@ smoothie = Recipe.create(
 smoothie.photo.attach(io: file, filename: "smoothie.jpg", content_type: "image/jpeg")
 smoothie.save
 
-puts "Amazing!"
+puts "Recipes( x )"
+
+protein= ['Chicken breast','Beef','Salmon','Tofu','Lentils','Shrimp','Eggs','Turkey','Pork','Eggs']
+protein.each do |ingredient|
+  Ingredient.create!(name: ingredient, category: 'Protein')
+end
+
+vegetable= ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans']
+vegetable.each do |ingredient|
+  Ingredient.create!(name: ingredient, category: 'Vegetable')
+end
+
+fruit= ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon']
+fruit.each do |ingredient|
+  Ingredient.create!(name: ingredient, category: 'Fruit')
+end
+
+condiment= ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise']
+condiment.each do |ingredient|
+  Ingredient.create!(name: ingredient, category: 'Condiment')
+end
+
+dairy= ['Milk','Cheese','Yogurt','Butter','Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
+dairy.each do |ingredient|
+  Ingredient.create!(name: ingredient, category: 'Dairy')
+end
+puts "Ingredients ( x )"
