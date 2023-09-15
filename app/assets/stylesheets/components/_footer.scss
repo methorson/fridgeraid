@@ -1,0 +1,17 @@
+.footer{
+  position:fixed;
+  height: 5vh;
+  top:95vh;
+  background-color: white;
+  left:0;
+  right:0;
+  font-size: 20px;
+}
+@media (min-width:746px){
+  .footer{
+    position:static;
+    top:none;
+    left:none;
+    right:none;
+  }
+}
