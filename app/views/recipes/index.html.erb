@@ -66,11 +66,12 @@
           </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">done</button>
-               <div class="mx-2 d-flex justify-content-center align-items-end text-end" data-controller="favoritable" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
+             <div class="mx-2 d-flex justify-content-center align-items-end text-end" data-controller="favoritable" data-favoritable-mark-path-value="<%= mark_path(recipe.id) %>" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
+                <button class="btn btn-primary <%= 'd-none' if (recipe.done == true) %>" data-action="click->favoritable#mark"> Mark as done</button>
                 <i class="fa-solid fa-heart <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
                 <i class="fa-regular fa-heart <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
               </div>
+
             </div>
           </div>
         </div>

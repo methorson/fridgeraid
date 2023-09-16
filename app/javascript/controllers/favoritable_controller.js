@@ -6,6 +6,7 @@ import { Controller } from "@hotwired/stimulus"
   static values = {
     likePath: String,
     unlikePath: String,
+    markPath: String,
   }
   connect(){
     console.log(this.likePathValue)
@@ -23,6 +24,10 @@ import { Controller } from "@hotwired/stimulus"
     fetch(this.unlikePathValue)
     // current_user.favorite(book)
   }
-
+  mark(){
+    console.log(this.markPathValue)
+    fetch(this.markPathValue)
+    // current_user.favorite(book)
+  }
 
 }
