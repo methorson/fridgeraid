@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
   export default class extends Controller {
 
-  static targets = ["liked", "unliked"]
+  static targets = ["liked", "unliked", "markedasdone", "markasdone"]
   static values = {
     likePath: String,
     unlikePath: String,
@@ -27,7 +27,7 @@ import { Controller } from "@hotwired/stimulus"
   mark(){
     console.log(this.markPathValue)
     fetch(this.markPathValue)
-    // current_user.favorite(book)
+    this.markasdoneTarget.classList.add("d-none")
+    this.markedasdoneTarget.classList.remove("d-none")
   }
-
 }

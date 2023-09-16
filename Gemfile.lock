@@ -294,11 +294,7 @@ DEPENDENCIES
   acts_as_favoritor
   autoprefixer-rails
   bootsnap
-<<<<<<< HEAD
-  bootstrap (~> 5.2, >= 5.2.3)
-=======
   bootstrap (~> 5.3.1)
->>>>>>> master
   capybara
   cloudinary
   debug
