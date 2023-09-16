@@ -25,8 +25,13 @@ class RecipesController < ApplicationController
     end
   end
 
-
-
+  def mark
+    recipe = Recipe.find(params[:recipe_id])
+    recipe.done = true
+    recipe.save
+    # redirect_to recipes_path
+    head :ok
+  end
 
 
 end
