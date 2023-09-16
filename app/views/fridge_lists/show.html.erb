@@ -1,0 +1,17 @@
+<h1>Hello <%= current_user.username %>,</h1>
+
+<h4>Welcome to your Fridge</h4>
+
+<div class="container">
+    <!-- Vertically centered scrollable modal -->
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <%= simple_form_for @fridge_list do |f| %>
+        <%= f.association :ingredients, as: :check_boxes, collection: @ingredients %>
+        <%= f.button :submit, 'Add Fridge Item', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  <hr>
+  <br>
+
+  <hr>
+  <br>
