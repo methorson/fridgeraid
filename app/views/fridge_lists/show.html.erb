@@ -1,17 +1,21 @@
 <h1>Hello <%= current_user.username %>,</h1>
 
 <h4>Welcome to your Fridge</h4>
-
 <div class="container">
-    <!-- Vertically centered scrollable modal -->
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <%= simple_form_for @fridge_list do |f| %>
-        <%= f.association :ingredients, as: :check_boxes, collection: @ingredients %>
-        <%= f.button :submit, 'Add Fridge Item', class: 'btn btn-primary' %>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      <% @categories.each do |category| %>
+      <h4><%= category.name %>:</h4>
+        <% category.ingredients.each do |ingredient|%>
+          <p><%= ingredient.name %></p>
+          <% end %>
       <% end %>
-    </div>
+    </label>
+  </div>
   <hr>
   <br>
+</div>
 
   <hr>
   <br>
