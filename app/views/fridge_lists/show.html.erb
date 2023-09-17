@@ -3,15 +3,18 @@
 <h4>Welcome to your Fridge</h4>
 <div class="container">
   <% @categories.each do |category| %>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display:block; margin-bottom: 20px;">
       <h4><%= category.name %>:</h4>
     </button>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <% end %>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <% @categories.each do |category| %>
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><h4><%= category.name %>:</h4></h5>
+            <h4 class="modal-title" id="exampleModalLabel"><%= category.name %>:</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -19,7 +22,7 @@
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" value="" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">
-                      <p><%= ingredient.name %></p>
+                  <p><%= ingredient.name %></p>
                 </label>
               </div>
             <% end %>
@@ -30,7 +33,7 @@
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
  <button type="button" class="btn btn-primary">Get Recipes</button>
