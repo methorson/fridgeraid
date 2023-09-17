@@ -16,7 +16,7 @@ FridgeList.destroy_all
 User.destroy_all
 Recipe.destroy_all
 Ingredient.destroy_all
-
+Category.destroy_all
 
 maria = User.create!(
   username: "Maria",
@@ -137,34 +137,23 @@ smoothie.save
 puts "Recipes( x )"
 
 fridge_list = FridgeList.create!(user: marina)
-
-protein= ['Chicken breast','Beef','Salmon','Tofu','Lentils','Shrimp','Eggs','Turkey','Pork','Eggs']
-protein.each do |ingredient|
-  Ingredient.create!(name: ingredient)
-end
-
-vegetable= ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans']
-vegetable.each do |ingredient|
-  Ingredient.create!(name: ingredient)
-end
-
-fruit= ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon']
-fruit.each do |ingredient|
-  Ingredient.create!(name: ingredient)
-end
-
-condiment= ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise']
-condiment.each do |ingredient|
-  Ingredient.create!(name: ingredient)
-end
-
-dairy= ['Milk','Cheese','Yogurt','Butter','Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
-dairy.each do |ingredient|
-  Ingredient.create!(name: ingredient)
-end
+categories = {
+  "Protein" => ['Chicken breast','Beef','Salmon','Tofu','Lentils','Shrimp','Eggs','Turkey','Pork','Eggs'],
+  "Vegetable" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
+  "Fruit" => ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon'],
+  "Condiment" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
+  "Dairy" => ['Milk','Cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
+}
+puts "Categories ( x )"
 puts "Ingredients ( x )"
 
-Ingredient.all.each do |ingredient|
-  fridge_list_ingredient = FridgeListIngredient.create!(fridge_list: fridge_list, ingredient: ingredient)
+categories.each do |category, ingredients|
+  category = Category.create(name: category)
+  ingredients.each do |ingredient|
+    Ingredient.create!(name: ingredient, category_id: category.id)
+  end
 end
-puts "Fridge_list_ingredient"
+# Ingredient.all.each do |ingredient|
+#   fridge_list_ingredient = FridgeListIngredient.create!(fridge_list: fridge_list, ingredient: ingredient)
+# end
+# puts "Fridge_list_ingredient"

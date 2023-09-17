@@ -8,7 +8,7 @@ class CreateRecipes < ActiveRecord::Migration[7.0]
       t.text :description
       t.text :instruction
       t.integer :level_of_difficulty
-      t.integer :done
+      t.boolean :done
       t.timestamps
     end
   end
