@@ -1,0 +1,53 @@
+.signup-page {
+  padding-top: 30px;
+  background-image: url('cookingspices.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.signup-simple-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-input-wrapper {
+  text-align: center;
+  font-size: 17;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(251, 255, 220, 0.8);
+  border: solid 1px #000000;
+  height: 70px;
+  width: 250px;
+}
+
+.form-input:active {
+  background-color: rgba(251, 255, 220, 0.8);
+}
+
+.create-account-button {
+  background-color: #98EECC;
+  color: #000000;
+  font-family: "Indie Flower", sans-serif;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.create-account-button:hover {
+  background-color: #0056b3;
+}
