@@ -1,7 +1,110 @@
 // Specific CSS for your home-page
 
 body {
-  background-image: asset-url('images/iStock-653806156.jpg');
-  background-size: cover;
+  background-image: asset-url('fridge5.png');
   background-repeat: no-repeat;
+  background-position-x: left;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.fridge-logo {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  opacity: 65%;
+}
+
+.logo-div {
+  margin-top: 5%;
+  margin-bottom: 20%;
+}
+
+.about-fridgeraid {
+  margin-top: 30px;
+}
+
+.login-area {
+
+  h1 {
+  font-size: 18px;
+  text-decoration: none;
+  font-family: "Imprima", sans-serif;
+  font-weight: lighter;
+  }
+
+  .btn-signup {
+    background-color: #FBFFDC;
+    color: #809675;
+    font-weight: bolder;
+    font-size: 28px;
+    border: none;
+    border-radius: 5px;
+    height: 65px;
+    width: 200px;
+    margin-bottom: 20px;
+    font-family: "Indie Flower", sans-serif;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .btn-signup:hover {
+    background-color: #809675;
+    color: #D0F5BE;
+  }
+
+  .btn-signup:active {
+    transform: translateY(2px);
+  }
+
+  .btn-sign-in {
+    background-color: #809675;
+    color: #D0F5BE;
+    font-weight: bolder;
+    font-size: 25px;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    width: 150px;
+    font-family: "Indie Flower", sans-serif;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-sign-in:hover {
+    background-color: #FBFFDC;
+    color: #809675;
+  }
+
+  .btn-sign-in:active {
+    transform: translateY(2px);
+  }
+
+}
+
+ul {
+  list-style-type: none;
+  font-size: 18px;
+  text-decoration: none;
+  font-family: "Imprima", sans-serif;
+  font-weight: lighter;
+
+
+  li {
+    margin-bottom: 15px;
+  }
 }
