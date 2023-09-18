@@ -1,7 +1,7 @@
 <%# Pages#home %>
 <%# <p>Find me in app/views/pages/home.html.erb</p> %>
 
-<body>
+<body class="home-background">
   <div class="container">
     <div class="logo-div">
         <img src="/assets/fridgelogo.png" alt="Fridge Logo" class="fridge-logo">
@@ -14,9 +14,12 @@
       </ul>
     </div>
     <div class="login-area">
-      <button class="btn-signup">Get Started <i class="fa-solid fa-arrow-right"></i></button>
+      <%# <button class="btn-signup">Get Started <i class="fa-solid fa-arrow-right"></i></button> %>
+      <%= link_to new_user_registration_path, class: "btn-signup" do %>
+      Get Started <i class="fa-solid fa-arrow-right"></i>
+      <% end %>
       <h1>Been here before?</h1>
-      <button class="btn-sign-in">Sign In</button>
+      <%= link_to "Sign In", new_user_session_path, class: "btn-sign-in" %>
     </div>
   </div>
 </body>
