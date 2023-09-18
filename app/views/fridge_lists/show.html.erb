@@ -19,6 +19,11 @@
           </div>
           <div class="modal-body">
             <% category.ingredients.each do |ingredient|%>
+                <%#= simple_form_for [@fridge_list, @fridge_list_ingredients] do |f| %>
+                  <%#= f.association :ingredient, multiple: true, as: :check_boxes, collection: ingredient %>
+                  <%#= f.input :ingredient, colllection: Ingredient.where(category: category),as: :boolean %>
+                  <%#= f.button :submit, 'Add Fridge Item', class: 'btn btn-primary' %>
+                <%# end %>
               <div class="form-check">
                 <input class="form-check-input ingredient-checkbox" type="checkbox" value="<%= ingredient.name %>" id="<%= "checkbox_#{ingredient.id}" %>">
                 <label class="form-check-label" for="flexCheckDefault">
@@ -58,4 +63,4 @@
 
 </script>
  <div id="selectedIngredients" style="display: none;"></div>
- <button type="button" class="btn btn-primary">Get Recipes</button>
+ <button type="button" id="GetRecipes" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveChanges()">Get Recipes</button>
