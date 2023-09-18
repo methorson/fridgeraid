@@ -3,14 +3,14 @@
 <h4>Welcome to your Fridge</h4>
 <div class="container">
   <% @categories.each do |category| %>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display:block; margin-bottom: 20px; margin-left: -15px;">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>" style="display:block; margin-bottom: 20px; margin-left: -15px;">
       <h4><%= category.name %>:</h4>
     </button>
   <% end %>
 
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <% @categories.each do |category| %>
+  <% @categories.each do |category| %>
+  <div class="modal fade" id="staticBackdrop<%= category.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -19,6 +19,11 @@
           </div>
           <div class="modal-body">
             <% category.ingredients.each do |ingredient|%>
+                <%#= simple_form_for [@fridge_list, @fridge_list_ingredients] do |f| %>
+                  <%#= f.association :ingredient, multiple: true, as: :check_boxes, collection: ingredient %>
+                  <%#= f.input :ingredient, colllection: Ingredient.where(category: category),as: :boolean %>
+                  <%#= f.button :submit, 'Add Fridge Item', class: 'btn btn-primary' %>
+                <%# end %>
               <div class="form-check">
                 <input class="form-check-input ingredient-checkbox" type="checkbox" value="<%= ingredient.name %>" id="<%= "checkbox_#{ingredient.id}" %>">
                 <label class="form-check-label" for="flexCheckDefault">
@@ -29,12 +34,12 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveChanges()">Save changes</button>
           </div>
         </div>
       </div>
-    <% end %>
   </div>
+ <% end %>
 </div>
 <script>
   function saveChanges() {
@@ -52,8 +57,10 @@
     const selectedIngredientsDiv = document.getElementById('selectedIngredients');
     selectedIngredientsDiv.style.display = 'block';
     selectedIngredientsDiv.innerHTML = `<strong>Ingredients:</strong><br>${selectedIngredients.join('<br>')}`;
+
+
   }
 
 </script>
  <div id="selectedIngredients" style="display: none;"></div>
- <button type="button" class="btn btn-primary">Get Recipes</button>
+ <button type="button" id="GetRecipes" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveChanges()">Get Recipes</button>
