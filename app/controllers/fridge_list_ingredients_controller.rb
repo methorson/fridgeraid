@@ -1,6 +1,4 @@
 class FridgeListIngredientsController < ApplicationController
-
-
   def new
     @fridge_list_ingredient = FridgeListIngredient.new
   end
@@ -23,7 +21,7 @@ class FridgeListIngredientsController < ApplicationController
   end
 
   def fridge_list_ingredients_params
-    permit(:fridge_list_ingredient).require(:fridge_list_id, :quantity, :category_id, ingredient_ids: [])
+    permit(:fridge_list_ingredient).require(:fridge_list_id, :quantity, :category_id)
   end
 
 end
