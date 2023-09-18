@@ -45,10 +45,12 @@ carbonara = Recipe.create(
   preparation_time: "30 minutes",
   instruction: "1. Cook pasta. 2. Cook pancetta. 3. Combine with eggs and cheese. 4. Toss with pasta.",
   level_of_difficulty: "Intermediate",
-  number_of_portions: 2
+  number_of_portions: 2,
+  user_id: User.first.id
 )
 carbonara.photo.attach(io: file, filename: "carbonara.jpg", content_type: "image/jpeg")
 carbonara.save
+puts carbonara
 
 file = URI.open("https://www.thespruceeats.com/thmb/_EqZNGmAmcn1dWa2dzYL1DIFj60=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ultimate-chicken-stir-fry-694919-hero-01-5c280c5446e0fb0001fd7aa9.jpg")
 chicken = Recipe.create!(
@@ -57,7 +59,8 @@ chicken = Recipe.create!(
   preparation_time: "20 minutes",
   instruction: "1. Slice chicken. 2. Stir-fry with vegetables. 3. Add sauce. 4. Serve hot.",
   level_of_difficulty: "Easy",
-  number_of_portions: 4
+  number_of_portions: 4,
+  user_id: User.first.id
 )
 chicken.photo.attach(io: file, filename: "chicken.jpg", content_type: "image/jpeg")
 chicken.save
@@ -69,8 +72,10 @@ pizza = Recipe.create!(
   preparation_time: "45 minutes",
   instruction: "1. Roll out dough. 2. Spread sauce and add toppings. 3. Bake in a hot oven.",
   level_of_difficulty: "Intermediate",
-  number_of_portions: 3
+  number_of_portions: 3,
+  user_id: User.first.id
 )
+
 pizza.photo.attach(io: file, filename: "pizza.jpg", content_type: "image/jpeg")
 pizza.save
 
@@ -81,7 +86,8 @@ curry = Recipe.create!(
   preparation_time: "40 minutes",
   instruction: "1. Sautee vegetables. 2. Add spices and coconut milk. 3. Simmer until cooked.",
   level_of_difficulty: "Intermediate",
-  number_of_portions: 4
+  number_of_portions: 4,
+  user_id: User.first.id
 )
 curry.photo.attach(io: file, filename: "curry.jpg", content_type: "image/jpeg")
 curry.save
@@ -93,7 +99,8 @@ cookies = Recipe.create!(
   preparation_time: "15 minutes",
   instruction: "1. Mix dough. 2. Drop spoonfuls onto a baking sheet. 3. Bake until golden brown.",
   level_of_difficulty: "Easy",
-  number_of_portions: 24
+  number_of_portions: 24,
+  user_id: User.first.id
 )
 cookies.photo.attach(io: file, filename: "cookies.jpg", content_type: "image/jpeg")
 cookies.save
@@ -105,7 +112,8 @@ salad = Recipe.create!(
   preparation_time: "15 minutes",
   instruction: "1. Toss lettuce, croutons, and cheese. 2. Drizzle with Caesar dressing.",
   level_of_difficulty: "Easy",
-  number_of_portions: 2
+  number_of_portions: 2,
+  user_id: User.first.id
 )
 salad.photo.attach(io: file, filename: "salad.jpg", content_type: "image/jpeg")
 salad.save
@@ -117,7 +125,8 @@ tacos = Recipe.create!(
   preparation_time: "25 minutes",
   instruction: "1. Cook beef with seasoning. 2. Assemble tacos with toppings.",
   level_of_difficulty: "Intermediate",
-  number_of_portions: 6
+  number_of_portions: 6,
+  user_id: User.first.id
 )
 tacos.photo.attach(io: file, filename: "tacos.jpg", content_type: "image/jpeg")
 tacos.save
@@ -129,7 +138,8 @@ smoothie = Recipe.create!(
   preparation_time: "10 minutes",
   instruction: "1. Blend mangoes, yogurt, and honey until smooth.",
   level_of_difficulty: "Easy",
-  number_of_portions: 2
+  number_of_portions: 2,
+  user_id: User.first.id
 )
 smoothie.photo.attach(io: file, filename: "smoothie.jpg", content_type: "image/jpeg")
 smoothie.save

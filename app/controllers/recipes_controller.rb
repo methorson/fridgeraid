@@ -33,5 +33,19 @@ class RecipesController < ApplicationController
     head :ok
   end
 
+  def mark_undone
+    recipe = Recipe.find(params[:recipe_id])
+    recipe.done = false
+    recipe.save
+    # redirect_to recipes_path
+    head :ok
+  end
+
+  def all_done_recipes
+    # @done_recipes = Recipe.select { |recipe| recipe[:done] == true }
+    # @done_recipes = Recipe.where(done: true)
+    @done_recipes = current_user.recipes.where(done: true)
+
+  end
 
 end

@@ -24,8 +24,14 @@ import { Controller } from "@hotwired/stimulus"
     fetch(this.unlikePathValue)
     // current_user.favorite(book)
   }
-  mark(){
+  mark_done_js(){
     console.log(this.markPathValue)
+    fetch(this.markPathValue)
+    this.markasdoneTarget.classList.add("d-none")
+    this.markedasdoneTarget.classList.remove("d-none")
+  }
+
+  mark_undone_js(){
     fetch(this.markPathValue)
     this.markasdoneTarget.classList.add("d-none")
     this.markedasdoneTarget.classList.remove("d-none")
