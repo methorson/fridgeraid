@@ -108,7 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_155509) do
     t.text "description"
     t.text "instruction"
     t.integer "level_of_difficulty"
-    t.integer "done"
+    t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"

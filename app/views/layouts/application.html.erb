@@ -15,9 +15,9 @@
   </head>
 
   <body>
-    <% unless current_page?(root_path) || devise_controller? %>
-      <%= render "shared/navbar" %>
-    <% end %>
+    <%# unless current_page?(root_path) || devise_controller? %>
+      <%#= render "shared/navbar" %>
+    <%# end %>
     <%= render "shared/flashes" %>
     <div style="min-height:95vh">
       <%= yield %>
