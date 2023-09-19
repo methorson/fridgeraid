@@ -1,0 +1,62 @@
+.sign-in-page {
+  padding-top: 85px;
+  background-image: url('fruitlogin.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.signin-simple-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.signin-simple-form input[type="text"],
+.signin-simple-form input[type="password"] {
+  background-color: rgba(251, 255, 220, 0.7);
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 22px;
+  font-family: "Actor";
+}
+
+
+.signin-simple-form input::placeholder {
+  text-align: center;
+  font-size: 28px;
+  color: #7b7b7b;
+  font-family: "Actor";
+}
+
+input.btn {
+  background-color: #98EECC;
+  color: #000000;
+  font-family: "Indie Flower", sans-serif;
+  font-size: 35px;
+  font-weight: bolder;
+  text-align: center;
+  width: 290px;
+  height: 60px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input.btn:hover {
+  color: #D0F5BE;
+  background-color: #809675;
+}
+
+.input.btn:active {
+  transform: translateY(2px);
+}

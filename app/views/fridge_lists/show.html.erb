@@ -41,25 +41,20 @@
   </div>
  <% end %>
 </div>
-<script>
-  function saveChanges() {
-    console.log('Save button clicked!');
-
-    const selectedIngredients = [];
-    const checkboxes = document.querySelectorAll('.ingredient-checkbox');
-    checkboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-        selectedIngredients.push(checkbox.value);
-      }
-    });
-
-    console.log('Ingredients:', selectedIngredients);
-    const selectedIngredientsDiv = document.getElementById('selectedIngredients');
-    selectedIngredientsDiv.style.display = 'block';
-    selectedIngredientsDiv.innerHTML = `<strong>Ingredients:</strong><br>${selectedIngredients.join('<br>')}`;
-
-  }
-
-</script>
- <div id="selectedIngredients" style="display: none;"></div>
+ <%# <div id="selectedIngredients" style="display: none;"></div> %>
+ <% @fridge_list.ingredients.each do |ingredient| %>
+ <%= ingredient.name %>
+ <% end %>
  <button type="button" id="GetRecipes" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveChanges()">Get Recipes</button>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Get Recipe", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

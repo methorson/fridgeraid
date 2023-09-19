@@ -138,11 +138,11 @@ puts "Recipes( x )"
 
 fridge_list = FridgeList.create!(user: marina)
 categories = {
-  "Protein" => ['Chicken breast','Beef','Salmon','Tofu','Lentils','Shrimp','Eggs','Turkey','Pork','Eggs'],
+  "Protein" => ['chicken','beef','salmon','tofu','Lentils','Shrimp','Eggs','Turkey','Pork','Eggs'],
   "Vegetable" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
   "Fruit" => ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon'],
   "Condiment" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
-  "Dairy" => ['Milk','Cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
+  "Dairy" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
 }
 puts "Categories ( x )"
 puts "Ingredients ( x )"
