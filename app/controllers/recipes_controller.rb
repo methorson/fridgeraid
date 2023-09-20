@@ -1,7 +1,12 @@
 class RecipesController < ApplicationController
   def index
-    if params[:ingredient_ids].present?
-      @recipes = Recipe.search_by_ingredients(params[:ingredient_ids])
+    if params[:fridge_list_ingredient].present?
+      @recipes = Recipe.search_by_ingredients(search_params[:selected_ingredient])
+    # @recipe_ingredients = RecipeIngredient.where(ingredient_id: search_params["selected_ingredient"].first.to_i)
+    # @recipes = []
+    # @recipe_ingredients.each do |recipe_ingredient|
+    #   @recipes << Recipe.find(recipe_ingredient.recipe_id)
+    # end
     else
       @recipes = Recipe.all
     end
@@ -36,6 +41,9 @@ class RecipesController < ApplicationController
     head :ok
   end
 
+
+  private
+
   def mark_undone
     recipe = Recipe.find(params[:recipe_id])
     recipe.done = false
@@ -48,5 +56,9 @@ class RecipesController < ApplicationController
     # @done_recipes = Recipe.select { |recipe| recipe[:done] == true }
     # @done_recipes = Recipe.where(done: true) this would be for all the saved ones
     @done_recipes = Recipe.where(done: true)
+  end
+
+  def search_params
+    params.require(:fridge_list_ingredient).permit(selected_ingredient: [])
   end
 end
