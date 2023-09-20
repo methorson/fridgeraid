@@ -43,8 +43,8 @@ class RecipesController < ApplicationController
 
   def all_done_recipes
     # @done_recipes = Recipe.select { |recipe| recipe[:done] == true }
-    # @done_recipes = Recipe.where(done: true)
-    @done_recipes = current_user.recipes.where(done: true)
+    # @done_recipes = Recipe.where(done: true) this would be for all the saved ones
+    @done_recipes = Recipe.where(done: true)
 
   end
 

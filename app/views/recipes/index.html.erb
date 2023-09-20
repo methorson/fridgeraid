@@ -1,85 +1,83 @@
-<div class="container  my-4">
-  <div class="text-center">
-    <h1 class="color-title"> Recipes:</h1>
+<div class=" text-center mt-4" >
+    <h1 class="color-green-bk"> Recipes:</h1>
   </div>
   <div class=" my-4">
     <% @recipes.each do |recipe| %>
-      <div class="my-3 pb-3 actual-card border-bottom" data-bs-toggle="modal" data-bs-target="#exampleModal<%= recipe.id %>" style="">
-        <div class="row g-0 ">
-          <div class="col-md-4 ">
-            <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
-            <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 200px;object-fit: cover;"  %>
-          </div>
-          <div class="col-md-6">
-            <%# <div class="card-body"> %>
-              <h5 class="card-title mx-2 my-2 color-title"><%= recipe.name.capitalize%></h5>
-              <div class="mx-2 d-flex">
-                <p class="border-end  pe-2">Dificulty:  <%= recipe.level_of_difficulty %></p>
-                <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
-                <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
+    <div  data-controller="favoritable"  data-favoritable-mark-path-value="<%= mark_path(recipe.id) %>"  data-favoritable-unmark-path-value="<%= unmark_path(recipe.id) %>" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
+      <div class="text-center">
+          <div class="my-3 pb-3 actual-card border-bottom"  style="">
+            <div class="row g-0 ">
+              <div class="col-md-4 " data-bs-toggle="modal" data-bs-target="#exampleModal<%= recipe.id %>">
+                <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
+                <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 200px;object-fit: cover;"  %>
               </div>
+              <div class="col-md-6">
+                <%# <div class="card-body"> %>
+                  <h5 class="card-title mx-2 my-2 color-title"><%= recipe.name.capitalize%></h5>
+                  <div class="mx-2 d-flex">
+                    <p class="border-end  pe-2">Dificulty:  <%= recipe.level_of_difficulty %></p>
+                    <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
+                    <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
+                  </div>
 
-              <div class="d-flex" >
-                <div>
-                <p class="card-text  mx-2"><%= recipe.description%></p>
-                <%# <p class="mx-2"> recipe.instruction </p> %>
+                  <div class="d-flex" >
+                    <div>
+                    <p class="card-text  mx-2"><%= recipe.description%></p>
+                    <%# <p class="mx-2"> recipe.instruction </p> %>
+                    <%# </div> %>
+                    </div>
+                  </div>
+
+                  <div class="mx-2 d-flex justify-content-end align-items-end mt-3"  >
+                    <i class="fa-regular fa-circle-check icon-index px-1" id="index_mark_<%= recipe.id %>" style="color: <%= recipe.done ? 'rgb(99, 230, 190)' : 'rgb(187, 190, 195)' %>;" data-favoritable-target="mark_er"  data-action="click->favoritable#mark_js" ></i>
+                    <i class="fa-solid fa-heart icon-index px-2 <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
+                    <i class="fa-regular fa-heart icon-index px-2  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade"  id="exampleModal<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="height:95vh">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel"><%= recipe.name.capitalize%></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="col-md-4 ">
+                <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
+                <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 200px;object-fit: cover;"  %>
+              </div>
+              <div class="col-md-6">
+                <%# <div class="card-body"> %>
+
+                  <div class="mx-2 pt-3 d-flex">
+                    <p class="border-end  pe-2">Dificulty:  <%= recipe.level_of_difficulty %></p>
+                    <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
+                    <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
+                  </div>
+
+                  <div class="d-flex" >
+                  <div>
+                  <p class="card-text  mx-2"><%= recipe.description%></p>
+                  <p> <%= recipe.instruction %></p>
                 <%# </div> %>
+                  </div>
+                  </div>
+              </div>
+                </div>
+                <div class="modal-footer">
+                <div class="mx-2 d-flex justify-content-center align-items-end text-end"  >
+                    <i class="fa-regular fa-circle-check icon-index " id="modal_mark_<%= recipe.id %>" style="color: <%= recipe.done ? 'rgb(99, 230, 190)' : 'rgb(187, 190, 195)' %>;" data-favoritable-target="mark_er"  data-action="click->favoritable#mark_js" ></i>
+                    <i class="fa-solid fa-heart icon-index  <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
+                    <i class="fa-regular fa-heart icon-index  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
+                  </div>
                 </div>
               </div>
-
-              <div class="d-flex" >
-                <p data-favoritable-target="markasdone" class=" <%= 'd-none' if (recipe.done == true) %>" data-action="click->favoritable#mark_done_js"> <i class="fa-regular fa-circle-check" style="color: #bbbec3;"></i></p>
-                <p data-favoritable-target="markedasdone" class="<%= 'd-none' if (recipe.done != true) %>" ><i class="fa-regular fa-circle-check" style="color: #63e6be;"></i></p>
-                 <div class="mx-2 d-flex justify-content-center align-items-end text-end" data-controller="favoritable" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
-                  <i class="fa-solid fa-heart <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
-                  <i class="fa-regular fa-heart <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade"  id="exampleModal<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="height:95vh">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel"><%= recipe.name.capitalize%></h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="col-md-4 ">
-            <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
-            <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 200px;object-fit: cover;"  %>
-          </div>
-          <div class="col-md-6">
-            <%# <div class="card-body"> %>
-
-              <div class="mx-2 pt-3 d-flex">
-                <p class="border-end  pe-2">Dificulty:  <%= recipe.level_of_difficulty %></p>
-                <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
-                <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
-              </div>
-
-              <div class="d-flex" >
-              <div>
-              <p class="card-text  mx-2"><%= recipe.description%></p>
-              <p> <%= recipe.instruction %></p>
-            <%# </div> %>
-              </div>
-              </div>
-          </div>
-            </div>
-            <div class="modal-footer">
-             <div class="mx-2 d-flex justify-content-center align-items-end text-end" data-controller="favoritable" data-favoritable-mark-path-value="<%= mark_path(recipe.id) %>" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
-                <p data-favoritable-target="markasdone" class=" <%= 'd-none' if (recipe.done == true) %>" data-action="click->favoritable#mark_done_js"> <i class="fa-regular fa-circle-check" style="color: #bbbec3;"></i></p>
-                <p data-favoritable-target="markedasdone" class="<%= 'd-none' if (recipe.done != true) %>" ><i class="fa-regular fa-circle-check" style="color: #63e6be;"></i></p>
-                <i class="fa-solid fa-heart <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
-                <i class="fa-regular fa-heart <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
-              </div>
             </div>
           </div>
-        </div>
       </div>
     <% end %>
   </div>

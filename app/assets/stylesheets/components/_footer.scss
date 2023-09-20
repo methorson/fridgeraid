@@ -7,6 +7,14 @@
   right:0;
   font-size: 20px;
 }
+
+#icon-footer{
+  border-radius: 50%;
+}
+
+.fa-color{
+  color:$black;
+}
 @media (min-width:746px){
   .footer{
     position:static;
