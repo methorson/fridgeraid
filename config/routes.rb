@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  authenticated(:user) do
+    root to: "fridge_lists#show", as: :authenticated_root
+  end
   root to: "pages#home"
 
   resources :fridge_lists, only: [ :show ] do
