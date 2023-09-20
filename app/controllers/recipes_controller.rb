@@ -42,7 +42,23 @@ class RecipesController < ApplicationController
     head :ok
   end
 
+
   private
+  
+  def mark_undone
+    recipe = Recipe.find(params[:recipe_id])
+    recipe.done = false
+    recipe.save
+    # redirect_to recipes_path
+    head :ok
+  end
+
+  def all_done_recipes
+    # @done_recipes = Recipe.select { |recipe| recipe[:done] == true }
+    # @done_recipes = Recipe.where(done: true) this would be for all the saved ones
+    @done_recipes = Recipe.where(done: true)
+
+  end
 
   def search_params
     params.require(:fridge_list_ingredient).permit(selected_ingredient: [])
