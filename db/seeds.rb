@@ -37,6 +37,22 @@ ana = User.create!(
 )
 puts "Users ( x )"
 
+categories = {
+  "Protein" => ['chicken','beef','salmon','tofu','Lentils','Shrimp','eggs','Turkey','Pork','Eggs'],
+  "Vegetable" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
+  "Fruit" => ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon'],
+  "Condiment" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
+  "Dairy" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
+}
+puts "Categories ( x )"
+puts "Ingredients ( x )"
+
+categories.each do |category, ingredients|
+  category = Category.create(name: category)
+  ingredients.each do |ingredient|
+    Ingredient.create!(name: ingredient, category_id: category.id)
+  end
+end
 
 file = URI.open("https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/76742_1416351942_0.jpg")
 carbonara = Recipe.create(
@@ -50,7 +66,12 @@ carbonara = Recipe.create(
 )
 carbonara.photo.attach(io: file, filename: "carbonara.jpg", content_type: "image/jpeg")
 carbonara.save
-puts carbonara
+
+cheese = Ingredient.find_by(name: "cheese")
+RecipeIngredient.create!(ingredient: cheese, recipe: carbonara)
+eggs = Ingredient.find_by(name: "eggs")
+RecipeIngredient.create!(ingredient: eggs, recipe: carbonara)
+
 
 file = URI.open("https://www.thespruceeats.com/thmb/_EqZNGmAmcn1dWa2dzYL1DIFj60=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ultimate-chicken-stir-fry-694919-hero-01-5c280c5446e0fb0001fd7aa9.jpg")
 chicken = Recipe.create!(
@@ -147,22 +168,7 @@ smoothie.save
 puts "Recipes( x )"
 
 fridge_list = FridgeList.create!(user: marina)
-categories = {
-  "Protein" => ['chicken','beef','salmon','tofu','Lentils','Shrimp','Eggs','Turkey','Pork','Eggs'],
-  "Vegetable" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
-  "Fruit" => ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon'],
-  "Condiment" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
-  "Dairy" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
-}
-puts "Categories ( x )"
-puts "Ingredients ( x )"
 
-categories.each do |category, ingredients|
-  category = Category.create(name: category)
-  ingredients.each do |ingredient|
-    Ingredient.create!(name: ingredient, category_id: category.id)
-  end
-end
 # Ingredient.all.each do |ingredient|
 #   fridge_list_ingredient = FridgeListIngredient.create!(fridge_list: fridge_list, ingredient: ingredient)
 # end
