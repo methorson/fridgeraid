@@ -1,9 +1,9 @@
 class RecipesController < ApplicationController
   def index
-    if params[:query].present?
-      @recipes = Recipe.search_by_ingredients(params[:query])
+    if params[:ingredient_ids].present?
+      @recipes = Recipe.search_by_ingredients(params[:ingredient_ids])
     else
-      redirect_to fridge_list_path
+      @recipes = Recipe.all
     end
    #@recipes =  current_user.favorited_by_type('Recipe')
 
