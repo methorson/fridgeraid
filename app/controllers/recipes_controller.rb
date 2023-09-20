@@ -6,7 +6,6 @@ class RecipesController < ApplicationController
       @recipes = Recipe.all
     end
    #@recipes =  current_user.favorited_by_type('Recipe')
-
   end
 
   def like
@@ -49,7 +48,5 @@ class RecipesController < ApplicationController
     # @done_recipes = Recipe.select { |recipe| recipe[:done] == true }
     # @done_recipes = Recipe.where(done: true) this would be for all the saved ones
     @done_recipes = Recipe.where(done: true)
-
   end
-
 end
