@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "recipes/:recipe_id/unlike", to: "recipes#unlike", as: :unlike
   get "recipes/:recipe_id/mark", to: "recipes#mark", as: :mark
   get "favorites", to: "recipes#all_favorite_recipes", as: :favorites
+  post '/recipes', to: 'recipes#index', as: 'search_recipes'
 
 
 end
