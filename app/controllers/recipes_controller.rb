@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
   def index
-     @recipes = Recipe.all
+    if params[:ingredient_ids].present?
+      @recipes = Recipe.search_by_ingredients(params[:ingredient_ids])
+    else
+      @recipes = Recipe.all
+    end
    #@recipes =  current_user.favorited_by_type('Recipe')
 
   end

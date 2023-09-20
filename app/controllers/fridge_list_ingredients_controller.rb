@@ -7,7 +7,7 @@ class FridgeListIngredientsController < ApplicationController
     @fridge_list_ingredient = FridgeListIngredient.new(fridge_list_ingredients_params)
 
     if @fridge_list_ingredient.save
-      redirect_to @fridge_list_ingredient
+      redirect_to recipes_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,7 +21,10 @@ class FridgeListIngredientsController < ApplicationController
   end
 
   def fridge_list_ingredients_params
-    permit(:fridge_list_ingredient).require(:fridge_list_id, :quantity, :category_id)
+    params.require(:fridge_list_ingredient).permit(
+      :fridge_list_id,
+      :category_id,
+      ingredient_id: []
+    )
   end
-
 end

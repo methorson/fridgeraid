@@ -1,10 +1,10 @@
 <%# Pages#home %>
 <%# <p>Find me in app/views/pages/home.html.erb</p> %>
 
-<body class="home-background">
+<div class="home-background">
   <div class="container">
     <div class="logo-div">
-        <img src="/assets/fridgelogo.png" alt="Fridge Logo" class="fridge-logo">
+      <%= image_tag("fridgelogo.png", alt: "Fridge Logo", class: "fridge-logo") %>
     </div>
     <div class="about-fridgeraid">
       <ul>
@@ -20,6 +20,7 @@
       <% end %>
       <h1>Been here before?</h1>
       <%= link_to "Sign In", new_user_session_path, class: "btn-sign-in" %>
+      <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
     </div>
   </div>
-</body>
+</div>

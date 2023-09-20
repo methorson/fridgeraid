@@ -10,14 +10,14 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Imprima&family=Indie+Flower&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Actor&family=Imprima&family=Indie+Flower&display=swap');
     </style>
   </head>
 
   <body>
-    <% unless current_page?(root_path) || devise_controller? %>
-      <%= render "shared/navbar" %>
-    <% end %>
+    <%# unless current_page?(root_path) || devise_controller? %>
+      <%#= render "shared/navbar" %>
+    <%# end %>
     <%= render "shared/flashes" %>
     <div style="min-height:95vh">
       <%= yield %>

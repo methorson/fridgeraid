@@ -7,5 +7,6 @@ class User < ApplicationRecord
   validates :username, :email, :password, presence: true
   has_one_attached :photo
   has_many :recipes
+  has_one :fridge_list
   acts_as_favoritor
 end

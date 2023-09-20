@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  authenticated(:user) do
+    root to: "fridge_lists#show", as: :authenticated_root
+  end
   root to: "pages#home"
 
   resources :fridge_lists, only: [ :show ] do
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
   get "recipes/:recipe_id/mark_undone", to: "recipes#mark_undone", as: :unmark
   get "recipes/all_done_recipes", to: "recipes#all_done_recipes", as: :all_done
   get "favorites", to: "recipes#all_favorite_recipes", as: :favorites
+  post '/recipes', to: 'recipes#index', as: 'search_recipes'
 
 
 end
