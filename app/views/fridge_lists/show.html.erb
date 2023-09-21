@@ -18,7 +18,7 @@
             </div>
             <div class="modal-body">
               <div class="ingredient-checkboxes">
-                 <%= simple_form_for [@fridge_list, @fridge_list_ingredients], url: recipes_path, method: :get do |f| %>
+                <%= simple_form_for [@fridge_list, @fridge_list_ingredients], url: recipes_path, method: :get do |f| %>
                   <% @categories.each do |category| %>
                     <h4><%= category.name %>:</h4>
                     <div class="ingredient-checkboxes">
@@ -39,10 +39,10 @@
                   <% end %>
               </div>
             </div>
-            <div class="modal-footer">
-               <%= f.submit "Get Recipe", class: "btn btn-primary" %>
-              <% end %>
-            </div>
+                <div class="modal-footer">
+                  <%= f.submit "Get Recipe", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
           </div>
         </div>
     </div>
