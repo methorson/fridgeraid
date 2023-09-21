@@ -1,6 +1,44 @@
-h1{
+h1 {
   margin-top: 16px;
-  margin-left: 105px;
+  margin-bottom: 10px;
   position: sticky;
-  font-size: 20px;
+  font-size: 25px;
+  font-style: "Imprima";
+}
+
+.container {
+  background-image: asset-url('bluefridge2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: #809675;;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Indie Flower", sans-serif;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.1s, transform 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #A8E6B7;
+  color: #fff;
+}
+
+
+.modal-content {
+  background-color: #E4F3E8;
+  font-family: "Actor";
+  font-size: 15px;
+  color: #04250C;
 }
