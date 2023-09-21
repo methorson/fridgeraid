@@ -22,3 +22,5 @@
   <% end %>
   <%= f.submit "Get Recipe", class: "btn btn-primary" %>
 <% end %>
+
+<%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
