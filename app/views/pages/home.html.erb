@@ -3,9 +3,9 @@
 
 <div class="home-background">
   <div class="container">
-    <div class="logo-div">
-        <img src="/assets/fridgelogo.png" alt="Fridge Logo" class="fridge-logo">
-    </div>
+<div class="logo-div">
+  <%= image_tag("fridgelogo.png", alt: "Fridge Logo", class: "fridge-logo") %>
+</div>
     <div class="about-fridgeraid">
       <ul>
         <li>Fill your fridge</li>
@@ -20,7 +20,7 @@
       <% end %>
       <h1>Been here before?</h1>
       <%= link_to "Sign In", new_user_session_path, class: "btn-sign-in" %>
-      <%# <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %> 
+      <%# <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
     </div>
   </div>
 </div>
