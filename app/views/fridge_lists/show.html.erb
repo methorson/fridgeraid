@@ -3,24 +3,49 @@
 <h4>Welcome to your Fridge</h4>
 
 
-<%= simple_form_for [@fridge_list, @fridge_list_ingredients], url: recipes_path, method: :get do |f| %>
-  <% @categories.each do |category| %>
-    <h4><%= category.name %>:</h4>
-    <div class="ingredient-checkboxes">
-      <% category.ingredients.each do |ingredient| %>
-        <%= f.input_field :selected_ingredient,
-                         as: :check_boxes,
-                         label: ingredient.name,
-                         value_method: :name,
-                         collection: [ingredient],
-                         include_hidden: false,
-                         checked: false,
-                         input_html: { value: ingredient.name, id: "checkbox_#{ingredient.id}" } %>
-        <%#= f.hidden_field :ingredient_id, value: ingredient.id %>
-      <% end %>
+<div class="container">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display:block; margin-bottom: 20px; margin-left: -15px;">
+      <h4>Add Ingredients <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
+    </button>
+  <!-- Modal -->
+ <% @categories.each do |category| %>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Ingredients <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="ingredient-checkboxes">
+                <%= simple_form_for [@fridge_list, @fridge_list_ingredients], url: recipes_path, method: :get do |f| %>
+                  <% @categories.each do |category| %>
+                    <h4><%= category.name %>:</h4>
+                    <div class="ingredient-checkboxes">
+                      <% category.ingredients.each do |ingredient| %>
+                        <%= f.input_field :selected_ingredient,
+                                        as: :check_boxes,
+                                        label: ingredient.name,
+                                        value_method: :name,
+                                        collection: [ingredient],
+                                        include_hidden: false,
+                                        checked: false,
+                                        input_html: { value: ingredient.name, id: "checkbox_#{ingredient.id}" } %>
+                        <%#= f.hidden_field :ingredient_id, value: ingredient.id %>
+                      <% end %>
+                      <br>
+                      <hr>
+                    </div>
+                  <% end %>
+              </div>
+            </div>
+                <div class="modal-footer">
+                  <%= f.submit "Get Recipe", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
+          </div>
+        </div>
     </div>
-  <% end %>
-  <%= f.submit "Get Recipe", class: "btn btn-primary" %>
-<% end %>
+ <% end %>
+</div>
 
-<%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>

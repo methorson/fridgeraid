@@ -84,3 +84,5 @@ production:
   database: fridgeraid_production
   username: fridgeraid
   password: <%= ENV["FRIDGERAID_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
