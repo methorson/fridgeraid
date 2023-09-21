@@ -42,7 +42,6 @@ class RecipesController < ApplicationController
   end
 
 
-  private
 
   def mark_undone
     recipe = Recipe.find(params[:recipe_id])
@@ -58,6 +57,7 @@ class RecipesController < ApplicationController
     @done_recipes = Recipe.where(done: true)
   end
 
+  private
   def search_params
     params.require(:fridge_list_ingredient).permit(selected_ingredient: [])
   end
