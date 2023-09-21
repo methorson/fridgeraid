@@ -1,9 +1,11 @@
-<h1>Hello <%= current_user.username %>,</h1>
 
-<h4>Welcome to your Fridge</h4>
 
 
 <div class="container-show">
+  <h1>Hello <%= current_user.username %>,</h1>
+  <br>
+  <h4>Welcome to your Fridge</h4>
+  <br>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display:block; margin-bottom: 20px; margin-left: -15px;">
       <h4>Add Ingredients <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
     </button>
@@ -37,12 +39,12 @@
                       <hr>
                     </div>
                   <% end %>
+                  <div class="modal-footer">
+                    <%= f.submit "Get Recipe", class: "btn btn-primary" %>
+                  </div>
+                <% end %>
               </div>
             </div>
-                <div class="modal-footer">
-                  <%= f.submit "Get Recipe", class: "btn btn-primary" %>
-                  <% end %>
-                </div>
           </div>
         </div>
     </div>
