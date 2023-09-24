@@ -63,5 +63,5 @@
           </div>
       </div>
   <% end %>
-<a href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" style="color: white; text-decoration: none;">Get Recipe</a>
+<a class="btn btn-primary" href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>">Get Recipe</a>
 </div>
