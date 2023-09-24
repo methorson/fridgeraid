@@ -1,16 +1,12 @@
 class RecipesController < ApplicationController
+
   def index
     if params[:fridge_list_ingredient].present?
-      @recipes = Recipe.search_by_ingredients(search_params[:selected_ingredient])
-    # @recipe_ingredients = RecipeIngredient.where(ingredient_id: search_params["selected_ingredient"].first.to_i)
-    # @recipes = []
-    # @recipe_ingredients.each do |recipe_ingredient|
-    #   @recipes << Recipe.find(recipe_ingredient.recipe_id)
-    # end
+      ingredients = params[:fridge_list_ingredient][:selected_ingredient]
+      @recipes = Recipe.search_by_ingredients(ingredients)
     else
       @recipes = Recipe.all
     end
-   #@recipes =  current_user.favorited_by_type('Recipe')
   end
 
   def like

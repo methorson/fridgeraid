@@ -6,47 +6,65 @@
   <br>
   <h4>Welcome to your Fridge</h4>
   <br>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display:block; margin-bottom: 20px; margin-left: -15px;">
-      <h4>Add Ingredients <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
+  <% @categories.each do |category| %>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>" style="display:block; margin-bottom: 20px; margin-left: -15px;">
+      <h4><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
     </button>
-  <!-- Modal -->
- <% @categories.each do |category| %>
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Add Ingredients <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="ingredient-checkboxes">
-                <%= simple_form_for [@fridge_list, @fridge_list_ingredients], url: recipes_path, method: :get do |f| %>
-                  <% @categories.each do |category| %>
-                    <h4><%= category.name %>:</h4>
+    <div class="saved_ingredients" data-controller="delete-ingredients">
+      <ul>
+        <% @fridge_list.ingredients.each do |ingredient| %>
+          <% if ingredient.category_id == category.id %>
+            <li>
+              <%= ingredient.name %>
+              <button data-delete-ingredients-target="ingredient"
+                data-id="<%= ingredient.id %>"
+                data-action="click->delete-ingredients#delete"
+                data-path="<%= fridge_list_ingredient_path(@fridge_list_ingredient) %>">
+                ❌
+              </button>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <%# raise %>
+  <% end %>
+
+    <!-- Modal -->
+    <%# Create Fridge_List Ingredients %>
+  <% @categories.each do |category| %>
+      <div class="modal fade" id="staticBackdrop<%= category.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title"><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h4><%= category.name %>:</h4>
+                  <%= simple_form_for [@fridge_list, @fridge_list_ingredients] do |f| %>
                     <div class="ingredient-checkboxes">
                       <% category.ingredients.each do |ingredient| %>
                         <%= f.input_field :selected_ingredient,
                                         as: :check_boxes,
                                         label: ingredient.name,
-                                        value_method: :name,
+                                        value_method: :id,
                                         collection: [ingredient],
                                         include_hidden: false,
                                         checked: false,
                                         input_html: { value: ingredient.name, id: "checkbox_#{ingredient.id}" } %>
                         <%#= f.hidden_field :ingredient_id, value: ingredient.id %>
                       <% end %>
-                      <br>
-                      <hr>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <%= f.submit "Save Changes", class: "btn btn-primary" %>
                     </div>
                   <% end %>
-                  <div class="modal-footer">
-                    <%= f.submit "Get Recipe", class: "btn btn-primary" %>
-                  </div>
-                <% end %>
               </div>
             </div>
           </div>
-        </div>
-    </div>
- <% end %>
+      </div>
+  <% end %>
+<a href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" style="color: white; text-decoration: none;">Get Recipe</a>
 </div>
