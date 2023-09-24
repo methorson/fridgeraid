@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
 
   def index
     if params[:fridge_list_ingredient].present?
-      ingredients = params[:fridge_list_ingredient][:selected_ingredient]
+      ingredients = params[:fridge_list_ingredient][:selected_ingredient].join(',')
       @recipes = Recipe.search_by_ingredients(ingredients)
     else
       @recipes = Recipe.all
