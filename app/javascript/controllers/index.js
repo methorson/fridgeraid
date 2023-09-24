@@ -3,6 +3,8 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import DeleteIngredientsController from "./delete_ingredients_controller"
+application.register("delete-ingredients", DeleteIngredientsController)
 
 import FavoritableController from "./favoritable_controller"
 application.register("favoritable", FavoritableController)

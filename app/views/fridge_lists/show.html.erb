@@ -10,6 +10,23 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>" style="display:block; margin-bottom: 20px; margin-left: -15px;">
       <h4><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
     </button>
+    <div class="saved_ingredients" data-controller="delete-ingredients">
+      <ul>
+        <% @fridge_list.ingredients.each do |ingredient| %>
+          <% if ingredient.category_id == category.id %>
+            <li>
+              <%= ingredient.name %>
+              <button data-delete-ingredients-target="ingredient"
+                data-id="<%= ingredient.id %>"
+                data-action="click->delete-ingredients#delete"
+                data-path="<%= fridge_list_ingredient_path(@fridge_list_ingredient) %>">
+                ❌
+              </button>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
     <%# raise %>
   <% end %>
 
@@ -40,9 +57,8 @@
                       <% end %>
                     </div>
                     <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <%= f.submit "Save Changes", class: "btn btn-primary" %>
-                         <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
                     </div>
                   <% end %>
               </div>
@@ -50,13 +66,5 @@
           </div>
       </div>
   <% end %>
-  <div class=" d-flex saved_ingredients" >
-    <% @fridge_list.ingredients.each do |ingredient| %>
-      <h1><%= ingredient.name %></h1>
-    <% end %>
-  </div>
-  <div class="button">
-    <%= button_to 'Get Recipes', recipes_path, :method => :get %>
-  </div>
+<a href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" style="color: white; text-decoration: none;">Get Recipe</a>
 </div>
-

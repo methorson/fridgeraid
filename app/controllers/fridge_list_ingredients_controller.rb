@@ -38,6 +38,11 @@ class FridgeListIngredientsController < ApplicationController
     end
   end
 
+  def destroy
+    @fridge_list_ingredient = FridgeListIngredient.find(params[:id])
+    @fridge_list_ingredient.destroy
+    redirect_to fridge_list_path, status: :see_other
+  end
 
   private
 
