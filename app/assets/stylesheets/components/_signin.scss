@@ -63,6 +63,14 @@ input.btn {
 
 .forgot-password-link {
   margin-top: 20px;
-  font-size: 18px;
-  color: #000000;
+
+  .forgot-password-link-text {
+    color: #38a473;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  .forgot-password-link-text:hover {
+    text-decoration: underline;
+  }
 }
