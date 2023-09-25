@@ -9,16 +9,15 @@
     </button>
     <div class="saved_ingredients" data-controller="delete-ingredients">
       <ul>
-        <% @fridge_list.ingredients.each do |ingredient| %>
-          <% if ingredient.category_id == category.id %>
+        <% @fridge_list.fridge_list_ingredients.each do |list_ingredient| %>
+          <% if list_ingredient.ingredient.category_id == category.id %>
             <li>
-              <%= ingredient.name %>
-              <button data-delete-ingredients-target="ingredient"
-                data-id="<%= ingredient.id %>"
-                data-action="click->delete-ingredients#delete"
-                data-path="<%= fridge_list_ingredient_path(@fridge_list_ingredient) %>">
+               <div class=" d-flex button-delete ">
+                <%= list_ingredient.ingredient.name %>
+                <%= link_to fridge_list_ingredient_path(list_ingredient), class:"text-decoration-none", data: { turbo_method: :delete } do %>
                 ❌
-              </button>
+               </div>
+              <% end %>
             </li>
           <% end %>
         <% end %>
@@ -42,15 +41,17 @@
                   <%= simple_form_for [@fridge_list, @fridge_list_ingredients] do |f| %>
                     <div class="ingredient-checkboxes">
                       <% category.ingredients.each do |ingredient| %>
-                        <%= f.input_field :selected_ingredient,
-                                        as: :check_boxes,
-                                        label: ingredient.name,
-                                        value_method: :id,
-                                        collection: [ingredient],
-                                        include_hidden: false,
-                                        checked: false,
-                                        input_html: { value: ingredient.name, id: "checkbox_#{ingredient.id}" } %>
-                        <%#= f.hidden_field :ingredient_id, value: ingredient.id %>
+                        <div class="tag-item">
+                          <%= f.association :ingredient,
+                                          as: :check_boxes,
+                                          value_method: :id,
+                                          collection: [ingredient],
+                                          include_hidden: false,
+                                          checked: false,
+                                          input_html: { class: "tag-selector", value: ingredient.name, id: "checkbox_#{ingredient.id}" },
+                                          item_wrapper_class: 'tag-item' %>
+                          <%#= f.hidden_field :ingredient_id, value: ingredient.id %>
+                        </div>
                       <% end %>
                     </div>
                     <div class="modal-footer">
@@ -63,5 +64,5 @@
           </div>
       </div>
   <% end %>
-<a href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" style="color: white; text-decoration: none;">Get Recipe</a>
+<a class="btn btn-primary", href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" >Get Recipe</a>
 </div>

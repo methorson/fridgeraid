@@ -17,5 +17,6 @@ export default class extends Controller {
         "X-CSRF-Token": csrfToken
       }
     });
+    window.location.href = `/fridge_lists/${event.currentTarget.dataset.id}`
   }
 }

@@ -6,7 +6,7 @@ class FridgeListIngredientsController < ApplicationController
 
   def create
     # @fridge_list_ingredient = FridgeListIngredient.new(fridge_list_ingredients_params)
-    ingredients = params[:fridge_list_ingredient][:selected_ingredient]
+    ingredients = params[:fridge_list_ingredient][:ingredient_id]
     # 1- Find the fridge list and save in a variable
     @fridge_list = FridgeList.find(params[:fridge_list_id])
     # 2 - .each inside the array and find each ingredient by id
