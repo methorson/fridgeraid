@@ -1,16 +1,29 @@
+
 class RecipesController < ApplicationController
   def index
+    @api = RecipeApi.new(ENV["APP_SPOON_KEY"])
+
     if params[:fridge_list_ingredient].present?
-      @recipes = Recipe.search_by_ingredients(search_params[:selected_ingredient])
-    # @recipe_ingredients = RecipeIngredient.where(ingredient_id: search_params["selected_ingredient"].first.to_i)
-    # @recipes = []
-    # @recipe_ingredients.each do |recipe_ingredient|
-    #   @recipes << Recipe.find(recipe_ingredient.recipe_id)
-    # end
+      # @recipes = Recipe.search_by_ingredients(search_params[:selected_ingredient])/marina
+      @ingredients = params[:fridge_list_ingredient]["selected_ingredient"].join(",")
+      @recipes = @api.recipe_by_ingredient(@ingredients)
+      @new_variablita = @recipes["results"].map { |hash| hash["id"] }
+      @hola = []
+      @new_variablita.each do |id|
+        @id = id
+        @recipe = @api.recipe_information(@id)
+        @hola << @recipe
+      end
+      @hola
+        # @id = recipe['id']
     else
-      @recipes = Recipe.all
+      # @recipes = Recipe.all/marina
+      @recipes = @api.all_recipes.first(10)
     end
-   #@recipes =  current_user.favorited_by_type('Recipe')
+  end
+
+  def create_recipe_from_api
+
   end
 
   def like
