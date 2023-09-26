@@ -1,68 +1,68 @@
-<div class="container-show">
-  <h1>Hello <%= current_user.username %>,</h1>
-  <br>
-  <h4>Welcome to your Fridge</h4>
-  <br>
-  <% @categories.each do |category| %>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>" style="display:block; margin-bottom: 20px; margin-left: -15px;">
-      <h4><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
-    </button>
-    <div class="saved_ingredients" data-controller="delete-ingredients">
-      <ul>
-        <% @fridge_list.fridge_list_ingredients.each do |list_ingredient| %>
-          <% if list_ingredient.ingredient.category_id == category.id %>
-            <li>
-               <div class=" d-flex button-delete ">
-                <%= list_ingredient.ingredient.name %>
-                <%= link_to fridge_list_ingredient_path(list_ingredient), class:"text-decoration-none", data: { turbo_method: :delete } do %>
-                ❌
-               </div>
-              <% end %>
-            </li>
+<div class="background-image"></div>
+<div class="container-show pb-2 pb-md-0">
+  <div class="fridge-show">
+    <h1>Hello <%= current_user.username %>,</h1>
+    <p>Welcome to your Fridge</p>
+    <% @categories.each do |category| %>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>" style="display:block; margin-bottom: 20px; margin-left: -15px;">
+        <h3><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h3>
+      </button>
+      <div class="saved_ingredients" data-controller="delete-ingredients">
+        <ul>
+          <% @fridge_list.fridge_list_ingredients.each do |list_ingredient| %>
+            <% if list_ingredient.ingredient.category_id == category.id %>
+              <li>
+                <div class=" d-flex button-delete ">
+                  <%= list_ingredient.ingredient.name %>
+                  <%= link_to fridge_list_ingredient_path(list_ingredient), class:"text-decoration-none", data: { turbo_method: :delete } do %>
+                  ❌
+                </div>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
-    </div>
-    <%# raise %>
-  <% end %>
+        </ul>
+      </div>
+      <%# raise %>
+    <% end %>
 
-    <!-- Modal -->
-    <%# Create Fridge_List Ingredients %>
-  <% @categories.each do |category| %>
-      <div class="modal fade" id="staticBackdrop<%= category.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title"><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <h4><%= category.name %>:</h4>
-                  <%= simple_form_for [@fridge_list, @fridge_list_ingredients] do |f| %>
-                    <div class="ingredient-checkboxes">
-                      <% category.ingredients.each do |ingredient| %>
-                        <div class="tag-item">
-                          <%= f.association :ingredient,
-                                          as: :check_boxes,
-                                          value_method: :id,
-                                          collection: [ingredient],
-                                          include_hidden: false,
-                                          checked: false,
-                                          input_html: { class: "tag-selector", value: ingredient.name, id: "checkbox_#{ingredient.id}" },
-                                          item_wrapper_class: 'tag-item' %>
-                          <%#= f.hidden_field :ingredient_id, value: ingredient.id %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <%= f.submit "Save Changes", class: "btn btn-primary" %>
-                    </div>
-                  <% end %>
+      <!-- Modal -->
+      <%# Create Fridge_List Ingredients %>
+    <% @categories.each do |category| %>
+        <div class="modal fade" id="staticBackdrop<%= category.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title"><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <%= simple_form_for [@fridge_list, @fridge_list_ingredients] do |f| %>
+                      <div class="ingredient-checkboxes">
+                        <% category.ingredients.each do |ingredient| %>
+                          <div class="tag-item">
+                            <%= f.association :ingredient,
+                                            as: :check_boxes,
+                                            value_method: :id,
+                                            collection: [ingredient],
+                                            include_hidden: false,
+                                            checked: false,
+                                            input_html: { class: "tag-selector", value: ingredient.name, id: "checkbox_#{ingredient.id}" },
+                                            item_wrapper_class: 'tag-item' %>
+                            <%#= f.hidden_field :ingredient_id, value: ingredient.id %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="modal-footer">
+                          <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> %>
+                          <%= f.submit "Save Changes", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                </div>
               </div>
             </div>
-          </div>
-      </div>
-  <% end %>
-<a class="btn btn-primary", href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" >Get Recipe</a>
+        </div>
+    <% end %>
+    <a class="btn btn-primary mb-5 mb-md-0", href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" >Get Recipes</a>
+  </div>
 </div>

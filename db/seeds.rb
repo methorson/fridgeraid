@@ -39,10 +39,10 @@ puts "Users ( x )"
 
 categories = {
   "Protein" => ['chicken','beef','salmon','tofu','Lentils','Shrimp','eggs','Turkey','Pork','Eggs'],
-  "Vegetable" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
+  "Vegetables" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
   "Fruit" => ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon'],
-  "Condiment" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
-  "Dairy" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
+  "Condiments" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
+  "Dairy Items" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
 }
 
 
