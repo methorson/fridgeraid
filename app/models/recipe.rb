@@ -15,4 +15,13 @@ class Recipe < ApplicationRecord
           any_word: true
         } # <-- now `superman batm` will return something!
       }
+
+  pg_search_scope :search_by_recipe_name,
+      against: [ :name ],
+      using: {
+        tsearch: {
+          prefix: true,
+          any_word: true
+        }
+      }
 end
