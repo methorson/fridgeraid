@@ -25,7 +25,13 @@ class RecipesController < ApplicationController
     @all_favorites = current_user.all_favorites
     @favorite_recipes = []
     @all_favorites.each do |favorite|
-      @favorite_recipes << Recipe.find(favorite.favoritable_id)
+      @favorite_recipes << favorite.favoritable_id
+    end
+    @favorite_recipes = Recipe.where(id: @favorite_recipes)
+    if params[:query].present?
+      @favorite_recipes = @favorite_recipes.search_by_recipe_name(params[:query])
+    else
+      @all_favorites = current_user.all_favorites
     end
   end
 
