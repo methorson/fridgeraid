@@ -3,15 +3,22 @@
 
 <div class="search">
   <div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <%= form_with url: favorites_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Favorite Recipe"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-    <% end %>
+  <div class="col-sm-8 my-3 d-flex align-items-center">
+    <div class="search">
+      <%= form_with url: favorites_path, method: :get, class: "d-flex w-100" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Favorite Recipe",
+              inputmode: "text"
+          %>
+    </div>
+        <div class="search-button">
+          <%= button_tag type: "submit", class: "btn btn-primary" do %>
+            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 </div>
 

@@ -17,7 +17,7 @@ class Recipe < ApplicationRecord
       }
 
   pg_search_scope :search_by_recipe_name,
-      against: [ :name ],
+      against: [ :name, :description, :instruction ],
       using: {
         tsearch: {
           prefix: true,
