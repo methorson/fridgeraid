@@ -1,38 +1,54 @@
-
+require "open-uri"
 class RecipesController < ApplicationController
   def index
+    @recipes = []
     @api = RecipeApi.new(ENV["APP_SPOON_KEY"])
-
     if params[:fridge_list_ingredient].present?
+      # current_user.recipes.destroy_all//Kathy
       # @recipes = Recipe.search_by_ingredients(search_params[:selected_ingredient])/marina
       @ingredients = params[:fridge_list_ingredient]["selected_ingredient"].join(",")
-      @recipes = @api.recipe_by_ingredient(@ingredients)
-      @new_variablita = @recipes["results"].map { |hash| hash["id"] }
-      @hola = []
-      @new_variablita.each do |id|
-        @id = id
-        @recipe = @api.recipe_information(@id)
-        @hola << @recipe
+      @api_recipes = @api.recipe_by_ingredient(@ingredients)
+      recipes_id = @api_recipes["results"].map { |hash| hash["id"] }
+      recipes_id.each do |api_id|
+#skip recipes if they already exist in the DB with the same id from the api
+        @recipe = Recipe.find_by(api_id: api_id)
+#
+#add a recipe to @recipes if
+        if @recipe.present?
+          @recipes << @recipe
+          next
+        end
+
+        @api_recipe = @api.recipe_information(api_id)
+        if @api_recipe["image"].present?
+          recipe = Recipe.new(
+            "api_id"=>api_id,
+            "name"=> @api_recipe["title"],
+            "preparation_time"=> @api_recipe["readyInMinutes"],
+            "number_of_portions"=> @api_recipe["servings"],
+            "instruction"=> @api_recipe["instructions"],
+            "description"=> @api_recipe["summary"]
+          )
+          file = URI.open(@api_recipe["image"])
+          recipe.photo.attach(io: file, filename: "recipe.png", content_type: "image/png")
+          recipe.user = current_user
+          recipe.save!
+          @recipes << recipe
+        end
       end
-      @hola
-        # @id = recipe['id']
-    else
-      # @recipes = Recipe.all/marina
-      @recipes = @api.all_recipes.first(10)
     end
   end
 
   def create_recipe_from_api
-
   end
 
-  def like
+  def like_rails
     recipe = Recipe.find(params[:recipe_id])
     current_user.favorite(recipe)
     head :ok
   end
 
-  def unlike
+  def unlike_rails
     recipe = Recipe.find(params[:recipe_id])
     current_user.unfavorite(recipe)
     head :ok
@@ -53,8 +69,6 @@ class RecipesController < ApplicationController
     # redirect_to recipes_path
     head :ok
   end
-
-
 
   def mark_undone
     recipe = Recipe.find(params[:recipe_id])

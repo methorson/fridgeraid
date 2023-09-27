@@ -24,8 +24,8 @@ Rails.application.routes.draw do
 
 
 
-  get "recipes/:recipe_id/like", to: "recipes#like", as: :like
-  get "recipes/:recipe_id/unlike", to: "recipes#unlike", as: :unlike
+  get "recipes/:recipe_id/like_rails", to: "recipes#like_rails", as: :like
+  get "recipes/:recipe_id/unlike_rails", to: "recipes#unlike_rails", as: :unlike
   get "recipes/:recipe_id/mark", to: "recipes#mark", as: :mark
   get "recipes/:recipe_id/mark_undone", to: "recipes#mark_undone", as: :unmark
   get "recipes/all_done_recipes", to: "recipes#all_done_recipes", as: :all_done
