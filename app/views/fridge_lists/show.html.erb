@@ -4,8 +4,9 @@
     <h1>Hello <%= current_user.username %>,</h1>
     <p>Welcome to your Fridge</p>
     <% @categories.each do |category| %>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>" style="display:block; margin-bottom: 20px; margin-left: -15px;">
-        <h3><%= category.name %> <i class="fa-solid fa-utensils" style="color: #000000;"></i></h3>
+      <button type="button" class="btn btn-category" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>"
+        style="display: block; margin-bottom: 20px; margin-left: -15px;">
+        <h3><%= category.name %> <i class="fa-solid fa-utensils" style="color: #FFFFFF;"></i></h3>
       </button>
       <div class="saved_ingredients" data-controller="delete-ingredients">
         <ul>
@@ -63,6 +64,6 @@
             </div>
         </div>
     <% end %>
-    <a class="btn btn-primary mb-5 mb-md-0", href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" >Get Recipes</a>
+<a class="btn btn-get-recipes mb-5 mb-md-0", href="<%= recipes_path(fridge_list_ingredient: { selected_ingredient: @fridge_list.ingredients.pluck(:name) }) %>" >Get Recipes <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 </div>

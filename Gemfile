@@ -46,6 +46,9 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+gem 'httparty'
+
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -57,6 +60,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "cloudinary"
 gem 'acts_as_favoritor'
 gem "pg_search"
+
+
 
 
 group :development, :test do

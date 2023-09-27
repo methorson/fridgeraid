@@ -1,7 +1,9 @@
-.footer {
-  position: fixed;
-  height: 8vh;
-  width: 100%;
+
+.footer{
+  position:fixed;
+  height: 6vh;
+  top:94vh;
+   width: 100%;
   background-color: white;
   bottom: 0;
   left: 0;
@@ -11,6 +13,7 @@
 
 #icon-footer{
   border-radius: 50%;
+  width: 45px;
 }
 
 .fa-color{

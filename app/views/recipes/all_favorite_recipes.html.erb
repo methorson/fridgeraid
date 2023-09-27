@@ -54,6 +54,7 @@
                   </div>
 
                   <div class="mx-2 d-flex justify-content-end align-items-end "  >
+                      <i class="fa-regular fa-circle-check icon-index px-1" id="index_mark_<%= recipe.id %>" style="color: <%= recipe.done ? 'rgb(99, 230, 190)' : 'rgb(187, 190, 195)' %>;" data-favoritable-target="mark_er"  data-action="click->favoritable#mark_js" ></i>
                       <i class="fa-solid fa-heart icon-index  <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
                       <i class="fa-regular fa-heart icon-index  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
                     </div>
@@ -95,6 +96,7 @@
                 </div>
                 <div class="modal-footer">
                 <div class="mx-2 d-flex justify-content-center align-items-end text-end"  >
+                    <i class="fa-regular fa-circle-check icon-index " id="modal_mark_<%= recipe.id %>" style="color: <%= recipe.done ? 'rgb(99, 230, 190)' : 'rgb(187, 190, 195)' %>;" data-favoritable-target="mark_er"  data-action="click->favoritable#mark_js" ></i>
                     <i class="fa-solid fa-heart  icon-index <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike"></i>
                     <i class="fa-regular fa-heart  icon-index <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like"></i>
                   </div>
