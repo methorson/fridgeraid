@@ -16,9 +16,7 @@ Rails.application.routes.draw do
 
   resources :ingredients, only: [:destroy]
   resources :reviews, only: [:destroy]
-
-
-
+  resources :fridge_list_ingredients, only: [:destroy]
 
 
 

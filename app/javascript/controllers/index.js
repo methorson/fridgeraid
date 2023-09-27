@@ -4,8 +4,17 @@
 
 import { application } from "./application"
 
+import DeleteIngredientsController from "./delete_ingredients_controller"
+application.register("delete-ingredients", DeleteIngredientsController)
+
 import FavoritableController from "./favoritable_controller"
 application.register("favoritable", FavoritableController)
 
+import FridgeListController from "./fridge_list_controller"
+application.register("fridge-list", FridgeListController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import VirtualKeyboardController from "./virtual_keyboard_controller"
+application.register("virtual-keyboard", VirtualKeyboardController)
