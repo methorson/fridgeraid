@@ -33,8 +33,9 @@ class RecipesController < ApplicationController
           file = URI.open(@api_recipe["image"])
           recipe.photo.attach(io: file, filename: "recipe.png", content_type: "image/png")
           recipe.user = current_user
-          recipe.save!
-          @recipes << recipe
+          if recipe.save
+            @recipes << recipe
+          end
         end
       end
     end
@@ -73,7 +74,7 @@ class RecipesController < ApplicationController
   def mark
     recipe = Recipe.find(params[:recipe_id])
     recipe.done = true
-    recipe.save
+    recipe.save!
     # redirect_to recipes_path
     head :ok
   end
@@ -81,7 +82,7 @@ class RecipesController < ApplicationController
   def mark_undone
     recipe = Recipe.find(params[:recipe_id])
     recipe.done = false
-    recipe.save
+    recipe.save!
     # redirect_to recipes_path
     head :ok
   end

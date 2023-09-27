@@ -11,48 +11,46 @@ import { Controller } from "@hotwired/stimulus"
 
   }
   connect(){
-    console.log(this.likePathValue)
+    // console.log(this.likePathValue)
     // console.log(this.unlikedT)
+    console.log("hola")
   }
+
   like_js(){
     this.likedTargets.forEach( likedTarget => {
       likedTarget.classList.remove("d-none")
     });
     this.unlikedTargets.forEach( unlikedTarget => {
       unlikedTarget.classList.add("d-none")
-  });
+    });
 
     fetch(this.likePathValue)
   }
+
   unlike_js(){
     this.unlikedTargets.forEach( unlikedTarget => {
       unlikedTarget.classList.remove("d-none")
     });
     this.likedTargets.forEach( likedTarget => {
       likedTarget.classList.add("d-none")
-  });
+    });
     fetch(this.unlikePathValue)
     // current_user.favorite(book)
   }
-//aquicambia
-  mark(){
-    this.likedTargets.forEach( likedTarget => {
-      likedTarget.classList.remove("d-none")
-    });
-    this.unlikedTargets.forEach( unlikedTarget => {
-      unlikedTarget.classList.add("d-none")
-  });
 
-    fetch(this.likePathValue)
+//aquicambia
+  mark_js(){
+    this.markasdoneTargets.forEach( markasdoneTarget => {
+      markasdoneTarget.style.color="#A8E6B7";
+    });
+    fetch(this.markPathValue)
   }
-  unmark(){
+  unmark_js(){
     this.unlikedTargets.forEach( unlikedTarget => {
       unlikedTarget.classList.remove("d-none")
-    });
-    this.likedTargets.forEach( likedTarget => {
-      likedTarget.classList.add("d-none")
+
   });
-    fetch(this.unlikePathValue)
+    fetch(this.markPathValue)
     // current_user.favorite(book)
   }
 
