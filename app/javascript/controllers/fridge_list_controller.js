@@ -1,28 +1,29 @@
 import { Controller } from "@hotwired/stimulus"
 
-  export default class extends FridgeList {
+  export default class extends Controller {
 
     static targets = ["ingredientList"]
 
     connect() {
 
-      showIngredients(event){
+    }
 
-        const categoryId = event.currentTarget.value;
+    showIngredients(event){
 
-        fetch(`/categories/${categoryId}/ingredients`)
-        .then((response) => response.json())
-        .then((data) => {
+      const categoryId = event.currentTarget.value;
 
-          this.ingredientListTarget.innerHTML = "";
+      fetch(`/categories/${categoryId}/ingredients`)
+      .then((response) => response.json())
+      .then((data) => {
 
-          data.forEach((ingredient) => {
-            const ingredientItem = document.createElement("li");
-            ingredientItem.textContent = ingredient.name;
-            this.ingredientListTarget.appendChild(ingredientItem);
-          })
+        this.ingredientListTarget.innerHTML = "";
+
+        data.forEach((ingredient) => {
+          const ingredientItem = document.createElement("li");
+          ingredientItem.textContent = ingredient.name;
+          this.ingredientListTarget.appendChild(ingredientItem);
         })
+      })
 
-      }
     }
   }
