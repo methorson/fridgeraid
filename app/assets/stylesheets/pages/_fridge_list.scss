@@ -41,7 +41,8 @@ h6 {
 }
 
 p {
-  font-size: 25px;
+  background-color: #ffffffa2;
+  font-size: 28px;
   font-family: "Imprima";
 }
 
@@ -52,9 +53,9 @@ p {
   height: 50px;
   padding: 10px 20px;
   margin-top: 10px;
-  border: 0.5px solid;
+  border: 0.5px solid #A8E6B7;
   border-radius: 20px;
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.683);
+  box-shadow: 4px 6px #53604d;
   font-size: 25px;
   font-family: "Actor";
   transition: background-color 0.1s, transform 0.3s;
@@ -76,6 +77,11 @@ p {
   font-size: 15px;
   color: #04250C;
 }
+
+// .ingredient-checkboxes {
+//   height: 10px;
+//   width: 30px;
+// }
 
 .btn-flat {
   color: white;
@@ -102,7 +108,7 @@ p {
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1.8rem;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   background-color: #ECEAFF;
@@ -110,6 +116,7 @@ p {
   border: 1px solid #7E73FF;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
+  box-shadow: 4px 6px #4c4971;
 }
 
 .tag-selector:checked + label {
@@ -153,8 +160,6 @@ p {
   font-size: 22px;
 }
 
-
-
 .btn-get-recipes {
   background-color: #A8E6B7;
   color: #000000;
@@ -162,9 +167,9 @@ p {
   height: 65px;
   padding: 5px 10px;
   margin-top: 10px;
-  border: 1px solid white;
+  border: 1px solid #d6ffe1;
   border-radius: 20px;
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.683);
+  box-shadow: 4px 6px #3a453d;
   font-size: 40px;
   font-family: "Indie Flower";
   font-weight: bolder;
