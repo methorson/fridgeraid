@@ -39,13 +39,12 @@ puts "Users ( x )"
 
 categories = {
   "Protein" => ['chicken','beef','salmon','tofu','Lentils','Shrimp','eggs','Turkey','Pork','Eggs'],
-  "Vegetable" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
+  "Vegetables" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
   "Fruit" => ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon'],
-  "Condiment" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
-  "Dairy" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
+  "Condiments" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
+  "Dairy Items" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
 }
-puts "Categories ( x )"
-puts "Ingredients ( x )"
+
 
 categories.each do |category, ingredients|
   category = Category.create(name: category)
@@ -53,7 +52,8 @@ categories.each do |category, ingredients|
     Ingredient.create!(name: ingredient, category_id: category.id)
   end
 end
-
+puts "Categories ( x )"
+puts "Ingredients ( x )"
 file = URI.open("https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/76742_1416351942_0.jpg")
 carbonara = Recipe.create(
   name: "Spaghetti Carbonara",
@@ -168,6 +168,8 @@ smoothie.save
 puts "Recipes( x )"
 
 fridge_list = FridgeList.create!(user: marina)
+fridge_list = FridgeList.create!(user: maria)
+fridge_list = FridgeList.create!(user: ana)
 
 # Ingredient.all.each do |ingredient|
 #   fridge_list_ingredient = FridgeListIngredient.create!(fridge_list: fridge_list, ingredient: ingredient)

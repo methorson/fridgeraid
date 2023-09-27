@@ -19,26 +19,30 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @ingredient.update(ingredient_params)
-      redirect_to ingredient_path(@ingredient)
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @ingredient.update(ingredient_params)
+  #     redirect_to ingredient_path(@ingredient)
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
   def destroy
+    @fridge_list_ingredient = FridgeListIngredient.find(params[:id])
+    @fridge_list = @fridge_list_ingredient.fridge_list
+    @fridge_list_ingredient.update(ingredient: nil)
+    @ingredient = @fridge_list_ingredient.ingredient
     @ingredient.destroy
-    redirect_to fridge_lists_path, status: :see_other
+    redirect_to fridge_list_path(@fridge_list), status: :see_other
   end
 
   private
 
   def set_ingredient
-    @ingredient = ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
   end
 
   def ingredient_params

@@ -20,31 +20,32 @@
 }
 
 .fridge-logo {
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  opacity: 80%;
+  opacity: 0.8;
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.5);
 }
 
 .logo-div {
-  margin-top: 15%;
-  margin-bottom: 16%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .about-fridgeraid {
-  margin-top: 15px;
+  margin-top: 45px;
 
   ul {
     list-style-type: none;
-    font-size: 25px;
+    font-size: 27px;
     text-decoration: none;
-    font-family: "Imprima", sans-serif;
-    font-weight: lighter;
-
+    font-family: "Actor";
+    color: #223026;
 
     li {
-      margin-top: 20px;
-      margin-bottom: 30px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #D0F5BE;
     }
   }
 }
@@ -54,16 +55,17 @@
     display: inline-block;
     height: 80px;
     width: 280px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     padding-top: 10px;
+    border: none;
+    border-radius: 15px;
     background-color: #FBFFDC;
     text-decoration: none;
+    text-align: center;
     font-size: 40px;
     color: #809675;
     font-weight: bolder;
-    border: none;
-    border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 20px;
     font-family: "Indie Flower", sans-serif;
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.1s, transform 0.3s;
@@ -72,10 +74,9 @@
   .btn-signup:hover {
     background-color: #809675;
     color: #D0F5BE;
-  }
-
-  .btn-signup:active {
-    transform: translateY(2px);
+    height: 85px;
+    width: 285px;
+    font-size: 45px;
   }
 
   h1 {
@@ -95,7 +96,7 @@
     font-size: 25px;
     text-decoration: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     font-family: "Indie Flower", sans-serif;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
@@ -104,10 +105,7 @@
   .btn-sign-in:hover {
     background-color: #FBFFDC;
     color: #809675;
-  }
-
-  .btn-sign-in:active {
-    transform: translateY(2px);
+    font-size: 28px;
   }
 
 }

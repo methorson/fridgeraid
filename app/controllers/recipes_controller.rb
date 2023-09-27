@@ -1,13 +1,14 @@
 require "open-uri"
 class RecipesController < ApplicationController
+
   def index
     @recipes = []
     @api = RecipeApi.new(ENV["APP_SPOON_KEY"])
     if params[:fridge_list_ingredient].present?
       # current_user.recipes.destroy_all//Kathy
       # @recipes = Recipe.search_by_ingredients(search_params[:selected_ingredient])/marina
-      @ingredients = params[:fridge_list_ingredient]["selected_ingredient"].join(",")
-      @api_recipes = @api.recipe_by_ingredient(@ingredients)
+      ingredients = params[:fridge_list_ingredient][:selected_ingredient].join(",")
+      @api_recipes = @api.recipe_by_ingredient(ingredients)
       recipes_id = @api_recipes["results"].map { |hash| hash["id"] }
       recipes_id.each do |api_id|
 #skip recipes if they already exist in the DB with the same id from the api
@@ -40,6 +41,7 @@ class RecipesController < ApplicationController
   end
 
   def create_recipe_from_api
+
   end
 
   def like_rails
@@ -58,7 +60,13 @@ class RecipesController < ApplicationController
     @all_favorites = current_user.all_favorites
     @favorite_recipes = []
     @all_favorites.each do |favorite|
-      @favorite_recipes << Recipe.find(favorite.favoritable_id)
+      @favorite_recipes << favorite.favoritable_id
+    end
+    @favorite_recipes = Recipe.where(id: @favorite_recipes)
+    if params[:query].present?
+      @favorite_recipes = @favorite_recipes.search_by_recipe_name(params[:query])
+    else
+      @all_favorites = current_user.all_favorites
     end
   end
 
