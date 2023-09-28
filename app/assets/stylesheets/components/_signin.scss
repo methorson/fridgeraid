@@ -17,30 +17,28 @@
   align-items: center;
 }
 
-
 .signin-simple-form input[type="text"],
 .signin-simple-form input[type="password"] {
-  background-color: rgba(251, 255, 220, 0.7);
+  background-color: rgba(255, 255, 255, 0.834);
   width: 300px;
   padding: 10px;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #a8f5bb;
   border-radius: 5px;
   font-size: 22px;
   font-family: "Actor";
 }
 
-
 .signin-simple-form input::placeholder {
   text-align: center;
   font-size: 28px;
-  color: #7b7b7b;
+  color: #686868;
   font-family: "Actor";
 }
 
 input.btn {
-  background-color: #98EECC;
-  color: #000000;
+  background-color: #A8E6B7;
+  color: #131313;
   font-family: "Indie Flower", sans-serif;
   font-size: 35px;
   font-weight: bolder;
@@ -49,28 +47,30 @@ input.btn {
   height: 60px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 6px #607e67;
 }
 
-.input.btn:hover {
+input.btn:hover {
   color: #D0F5BE;
-  background-color: #809675;
-}
-
-.input.btn:active {
-  transform: translateY(2px);
+  background-color: #607e67;
+  box-shadow: 2px 4px #2d3b30;
 }
 
 .forgot-password-link {
-  margin-top: 20px;
+  margin-top: 30px;
+  background-color: #d9f9e1;
+  border-radius: 30px;
+  padding: 5px 10px;
+  box-shadow: 2px 4px #678a70;
+}
 
-  .forgot-password-link-text {
-    color: #38a473;
-    text-decoration: none;
-    font-size: 20px;
-  }
+.forgot-password-link-text {
+  color: #405b4f;
+  text-decoration: none;
+  font-size: 20px;
+}
 
-  .forgot-password-link-text:hover {
-    text-decoration: underline;
-  }
+.forgot-password-link:hover {
+  background-color: #678a70;
+  box-shadow: 1px 2px #435949;
 }
