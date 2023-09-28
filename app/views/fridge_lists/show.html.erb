@@ -1,8 +1,8 @@
 <div class="background-image"></div>
 <div class="container-show pb-2 pb-md-0">
   <div class="fridge-show">
-    <h1>Hello <%= current_user.username %>,</h1>
-    <p>Welcome to your Fridge</p>
+    <h6>Hello <%= current_user.username %>,</h6>
+    <p>Welcome to your Fridge. 🍽</p>
     <% @categories.each do |category| %>
       <button type="button" class="btn btn-category" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>"
         style="display: block; margin-bottom: 20px; margin-left: -15px;">
@@ -13,12 +13,16 @@
           <% @fridge_list.fridge_list_ingredients.each do |list_ingredient| %>
             <% if list_ingredient.ingredient.category_id == category.id %>
               <li>
-                <div class=" d-flex button-delete ">
-                  <%= list_ingredient.ingredient.name %>
-                  <%= link_to fridge_list_ingredient_path(list_ingredient), class:"text-decoration-none", data: { turbo_method: :delete } do %>
-                  ❌
+                <div class="d-flex button-delete">
+                  <div class="ingredient-name">
+                    <%= list_ingredient.ingredient.name %>
+                  </div>
+                  <div class="delete-link">
+                    <%= link_to fridge_list_ingredient_path(list_ingredient), class: "text-decoration-none", data: { turbo_method: :delete } do %>
+                      ❌
+                    <% end %>
+                  </div>
                 </div>
-                <% end %>
               </li>
             <% end %>
           <% end %>

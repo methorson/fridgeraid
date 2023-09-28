@@ -1,3 +1,4 @@
+
 import { Controller } from "@hotwired/stimulus"
 import Keyboard from 'simple-keyboard';
 // import 'simple-keyboard/build/css/index.css';
@@ -33,3 +34,4 @@ export default class extends Controller {
   //   console.log('Button pressed', button);
   // }
 }
+

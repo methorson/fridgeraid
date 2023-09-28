@@ -20,7 +20,8 @@ class RecipeApi
   end
 
   def recipe_information(id)
-    self.class.get("/#{id}/information", @options)
+    self.class.get("/#{id}/information", @options).parsed_response
   end
+
 
 end
