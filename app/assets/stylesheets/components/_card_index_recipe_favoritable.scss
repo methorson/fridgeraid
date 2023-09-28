@@ -5,9 +5,32 @@
 }
 
 .icon-index{
-  font-size: 20px;
+  font-size: 30px;
 }
 .div-color{
   background-color:white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Spread radius, Color */
 }
+.cardib {
+  width: 100%; /* You can adjust the width as needed */
+  padding:10px; /* Optional: Add padding to the card */
+  height: 150px;
+  overflow: auto; /* Prevent content from overflowing the card */
+}
+.cardi-instruction{
+  width: 100%; /* You can adjust the width as needed */
+  padding:10px; /* Optional: Add padding to the card */
+  height: 300px;
+  overflow: auto;
+}
+.cardi-description{
+  width: 100%; /* You can adjust the width as needed */
+  padding:10px; /* Optional: Add padding to the card */
+  height: 150px;
+  overflow: auto;
+}
+
+// .cardib-text {
+//   white-space: nowrap; /* Prevent text from wrapping to the next line */
+//   text-overflow: auto; /* Show ellipsis (...) for text that overflows */
+// }

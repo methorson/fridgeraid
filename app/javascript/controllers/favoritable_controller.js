@@ -13,7 +13,7 @@ import { Controller } from "@hotwired/stimulus"
   connect(){
     // console.log(this.likePathValue)
     // console.log(this.unlikedT)
-    console.log("hola")
+
   }
 
   like_js(){
@@ -41,16 +41,28 @@ import { Controller } from "@hotwired/stimulus"
 //aquicambia
   mark_js(){
     this.markasdoneTargets.forEach( markasdoneTarget => {
-      markasdoneTarget.style.color="#A8E6B7";
+      markasdoneTarget.classList.add("d-none")
+      // markasdoneTarget.style.color="#A8E6B7";
+      console.log(markasdoneTarget.classList)
     });
+    this.markedasdoneTargets.forEach( markedasdoneTarget => {
+      markedasdoneTarget.classList.remove("d-none")
+      console.log(markedasdoneTarget.classList)
+
+    });
+
     fetch(this.markPathValue)
   }
-  unmark_js(){
-    this.unlikedTargets.forEach( unlikedTarget => {
-      unlikedTarget.classList.remove("d-none")
 
-  });
-    fetch(this.markPathValue)
+  unmark_js(){
+    console.log("unmark")
+    this.markedasdoneTargets.forEach( markedasdoneTarget => {
+      markedasdoneTarget.classList.add("d-none")
+    });
+    this.markasdoneTargets.forEach( markasdoneTarget => {
+      markasdoneTarget.classList.remove("d-none")
+    });
+    fetch(this.unmarkPathValue)
     // current_user.favorite(book)
   }
 

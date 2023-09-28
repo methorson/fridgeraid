@@ -16,16 +16,14 @@
                   <div class="col-md-6">
                     <%# <div class="card-body"> %>
                       <h5 class="card-title mx-2 my-2 color-title"><%= recipe.name.capitalize%></h5>
-                      <div class="mx-2 d-flex">
+                      <div class="mx-2 d-flex justify-content-center">
                         <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
                         <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time%></i>min</p>
                       </div>
 
                       <div class="d-flex" >
-                        <div>
-                        <p class="card-text  mx-2"><%= raw recipe.description.first(200)%>...</p>
-                        <%# <p class="mx-2"> recipe.instruction </p> %>
-                        <%# </div> %>
+                        <div class="cardib">
+                          <p class="cardib-text"><%= raw recipe.description.first(200)%>...</p>
                         </div>
                       </div>
 
@@ -53,27 +51,25 @@
                   <div class="col-md-6">
                     <%# <div class="card-body"> %>
 
-                      <div class="mx-2 pt-3 d-flex">
+                      <div class="mx-2 pt-3 d-flex justify-content-center">
                         <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
                         <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
                       </div>
 
-                      <div class="d-flex" >
-                      <div>
-                      <p> <%= raw recipe.instruction %></p>
-                    <%# </div> %>
-
-                      <div class="mx-2 d-flex justify-content-end align-items-end mt-3"  >
-                        <i class="fa-solid fa-heart icon-index px-2 <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike_js"></i>
-                        <i class="fa-regular fa-heart icon-index px-2  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like_js"></i>
+                       <div class="d-flex" >
+                        <div class="">
+                          <p class="cardi-instruction"><%= raw recipe.instruction%></p>
+                        </div>
                       </div>
 
-                      </div>
                   </div>
                     </div>
                     <div class="modal-footer">
                     <div class="mx-2 d-flex justify-content-center align-items-end text-end"  >
-
+                      <div class="mx-2 d-flex justify-content-end align-items-end">
+                        <i class="fa-solid fa-heart icon-index px-2 <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike_js"></i>
+                        <i class="fa-regular fa-heart icon-index px-2  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like_js"></i>
+                      </div>
                       </div>
                     </div>
                   </div>
