@@ -4,8 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 
     static targets = ["ingredientList"]
 
-
-
     showIngredients(event){
 
       const categoryId = event.currentTarget.value;

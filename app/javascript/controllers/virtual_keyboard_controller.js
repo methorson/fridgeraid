@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 053354ac332785835a7e43ded3b495184af1ed26
 import { Controller } from "@hotwired/stimulus"
 import Keyboard from 'simple-keyboard';
 // import 'simple-keyboard/build/css/index.css';
@@ -33,3 +37,7 @@ export default class extends Controller {
   //   console.log('Button pressed', button);
   // }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 053354ac332785835a7e43ded3b495184af1ed26
