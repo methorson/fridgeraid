@@ -25,14 +25,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
 }
 
 h6 {
   background-color: #ffffffa2;
-  margin-bottom: 5px;
   width: 100vw;
   text-align: center;
+  margin-bottom: 0;
   font-size: 65px;
   font-weight: bold;
   font-family: "Indie Flower", cursive;
@@ -41,8 +41,8 @@ h6 {
 }
 
 p {
-  background-color: #ffffffa2;
-  font-size: 28px;
+  margin-bottom: 0;
+  font-size: 22px;
   font-family: "Imprima";
 }
 
@@ -53,7 +53,7 @@ p {
   height: 50px;
   padding: 10px 20px;
   margin-top: 10px;
-  border: 0.5px solid #A8E6B7;
+  border: 1px solid #d6ffe1;
   border-radius: 20px;
   box-shadow: 4px 6px #53604d;
   font-size: 25px;
@@ -63,7 +63,8 @@ p {
 
 
 .btn-category:hover {
-  background-color: #A8E6B7;
+  background-color: #53604d;
+  box-shadow: 2px 4px #3c4638;
   color: #fff;
 }
 
@@ -77,11 +78,6 @@ p {
   font-size: 15px;
   color: #04250C;
 }
-
-// .ingredient-checkboxes {
-//   height: 10px;
-//   width: 30px;
-// }
 
 .btn-flat {
   color: white;
@@ -112,7 +108,7 @@ p {
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   background-color: #ECEAFF;
-  color: #7E73FF;
+  color: #8b81fb;
   border: 1px solid #7E73FF;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
@@ -120,12 +116,17 @@ p {
 }
 
 .tag-selector:checked + label {
-  background-color: #7E73FF;
+  background-color: #897ffb;
   color: white;
 }
 
 .ingredient-checkboxes legend {
   display: none;
+}
+
+.modal-footer{
+ display: flex;
+ justify-content: center;
 }
 
 .saved_ingredients ul {
@@ -162,21 +163,22 @@ p {
 
 .btn-get-recipes {
   background-color: #A8E6B7;
-  color: #000000;
-  width: 280px;
+  color: #2f2f2f;
+  width: 250px;
   height: 65px;
   padding: 5px 10px;
   margin-top: 10px;
-  border: 1px solid #d6ffe1;
+  border: 1px solid #ffffff57;
   border-radius: 20px;
   box-shadow: 4px 6px #3a453d;
-  font-size: 40px;
+  font-size: 35px;
   font-family: "Indie Flower";
   font-weight: bolder;
   transition: background-color 0.1s, transform 0.3s;
 }
 
 .btn-get-recipes:hover {
-  background-color: #809675;
+  background-color: #7aaa86;
   color: #fff;
+  box-shadow: 2px 4px #53745b;
 }
