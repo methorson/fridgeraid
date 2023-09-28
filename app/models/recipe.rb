@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   validates :name, :description, :instruction, :preparation_time, presence: true
+  has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_many :reviews, dependent: :destroy
   has_one_attached :photo
@@ -17,7 +18,7 @@ class Recipe < ApplicationRecord
       }
 
   pg_search_scope :search_by_recipe_name,
-      against: [ :name ],
+      against: [ :name, :description, :instruction ],
       using: {
         tsearch: {
           prefix: true,

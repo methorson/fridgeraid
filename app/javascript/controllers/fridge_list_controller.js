@@ -4,9 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 
     static targets = ["ingredientList"]
 
-    connect() {
 
-    }
 
     showIngredients(event){
 
