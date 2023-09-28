@@ -2,6 +2,7 @@
     <h1 class="color-green-bk"> Recipes you've made:</h1>
   </div>
   <div class=" my-4 div-color">
+
     <% @done_recipes.each do |recipe| %>
     <div  data-controller="favoritable"  data-favoritable-mark-path-value="<%= mark_path(recipe.id) %>"  data-favoritable-unmark-path-value="<%= unmark_path(recipe.id) %>" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
       <div class="text-center">
@@ -21,10 +22,8 @@
                   </div>
 
                   <div class="d-flex" >
-                    <div>
-                    <p class="card-text  mx-2"><%= recipe.description%></p>
-                    <%# <p class="mx-2"> recipe.instruction </p> %>
-                    <%# </div> %>
+                    <div class="cardib">
+                      <p class="cardib-text"><%= raw recipe.description.first(200)%>...</p>
                     </div>
                   </div>
 
@@ -58,11 +57,9 @@
                   </div>
 
                   <div class="d-flex" >
-                  <div>
-                  <p class="card-text  mx-2"><%= recipe.description%></p>
-                  <p> <%= recipe.instruction %></p>
-                <%# </div> %>
-                  </div>
+                    <div class="">
+                      <p class="cardi-instruction"><%= raw recipe.instruction%></p>
+                    </div>
                   </div>
               </div>
                 </div>
