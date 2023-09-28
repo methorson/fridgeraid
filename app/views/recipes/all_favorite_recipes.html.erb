@@ -1,29 +1,27 @@
-
-
-
 <div data-controller='virtual-keyboard' class="search">
   <div class="row justify-content-center">
-  <div class="col-sm-8 my-3 d-flex align-items-center">
-    <div class="search">
-      <%= form_with url: favorites_path, method: :get, class: "d-flex w-100" do %>
-        <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Favorite Recipe",
-              inputmode: "text"
-          %>
-    </div>
-        <div class="search-button">
-          <%= button_tag type: "submit", class: "btn btn-primary" do %>
-            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
-          <% end %>
-        </div>
-      <% end %>
+  <div class="col-sm-8 my-3">
+    <%= form_with url: favorites_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Favorite Recipe",
+            data: { virtual_keyboard_target: :search, action: "click->virtual-keyboard#openKeyboard" },
+            value: "Favorite Recipe"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="keyboard-container d-none" data-virtual-keyboard-target='keyboard'>
     <div class="simple-keyboard"></div>
   </div>
 </div>
+  <div class="keyboard-container d-none" data-virtual-keyboard-target='keyboard'>
+    <div class="simple-keyboard"></div>
+  </div>
+</div>
+<br>
+
 <div class=" text-center mt-4" >
     <h1 class="color-green-bk"> Your favorite recipes:</h1>
   </div>
