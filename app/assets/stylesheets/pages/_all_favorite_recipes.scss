@@ -1,0 +1,20 @@
+
+.search {
+  padding: 20px;
+}
+
+.search input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: transparent;
+}
+
+.keyboard-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f9f9f9;
+  padding: 20px;
+}

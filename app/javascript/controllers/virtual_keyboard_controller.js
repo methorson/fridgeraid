@@ -1,4 +1,3 @@
-
 import { Controller } from "@hotwired/stimulus"
 import Keyboard from 'simple-keyboard';
 // import 'simple-keyboard/build/css/index.css';
@@ -18,6 +17,13 @@ export default class extends Controller {
     // console.log('test', this.keyboard);
   }
 
+  toggleKeyboard() {
+    console.log('Toggle keyboard called');
+    const keyboard = this.keyboardTarget;
+    console.log('Keyboard target:', keyboard);
+    keyboard.classList.remove('d-none');
+  }
+
   onChange(input) {
     console.log("search", this.searchTarget.value);
 
@@ -34,4 +40,3 @@ export default class extends Controller {
   //   console.log('Button pressed', button);
   // }
 }
-
