@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
           @recipes << @recipe
           next
         end
-
+        #
         @api_recipe = @api.recipe_information(api_id)
         if @api_recipe["image"].present?
           recipe = Recipe.new(
