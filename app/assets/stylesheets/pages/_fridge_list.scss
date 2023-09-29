@@ -14,13 +14,13 @@
   background-color: transparent;
   height: 100vh;
   max-width: 100vw;
+  margin-top: 10px;
   margin: 0;
   overflow-y: auto;
   position: relative;
 }
 
 .fridge-show {
-  margin-top: 35px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,15 +47,13 @@ p {
 }
 
 .btn-category {
-  background-color: #809675;
+  background-color: #8abf97;
   color: #fff;
   width: 60vw;
   height: 50px;
   padding: 10px 20px;
-  margin-top: 10px;
-  border: 1px solid #d6ffe1;
   border-radius: 20px;
-  box-shadow: 4px 6px #53604d;
+  box-shadow: 2px 4px #53604d;
   font-size: 25px;
   font-family: "Actor";
   transition: background-color 0.1s, transform 0.3s;

@@ -7,7 +7,7 @@
     <% @categories.each do |category| %>
       <button type="button" class="btn btn-category" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= category.id %>"
         style="display: block; margin-bottom: 20px; margin-left: -15px;">
-        <h3>＋<%= category.name %> <i class="fa-solid fa-utensils" style="color: #FFFFFF;"></i></h3>
+        <h3>＋<%= category.name %></h3>
       </button>
       <div class="saved_ingredients" data-controller="delete-ingredients">
         <ul>
