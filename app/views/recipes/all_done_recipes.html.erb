@@ -15,10 +15,9 @@
               <div class="col-md-6">
                 <%# <div class="card-body"> %>
                   <h5 class="card-title mx-2 my-2 color-title"><%= recipe.name.capitalize%></h5>
-                  <div class="mx-2 d-flex">
-                    <p class="border-end  pe-2">Dificulty:  <%= recipe.level_of_difficulty %></p>
+                  <div class="mx-2 d-flex justify-content-center">
                     <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
-                    <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
+                    <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time%></i>min</p>
                   </div>
 
                   <div class="d-flex" >
@@ -27,8 +26,10 @@
                     </div>
                   </div>
 
-                  <div class="mx-2 d-flex justify-content-end align-items-end">
-                    <i class="fa-regular fa-circle-check icon-index  " id="index_mark_<%= recipe.id %>" style="color: <%= recipe.done ? 'rgb(99, 230, 190)' : 'rgb(187, 190, 195)' %>;" data-favoritable-target="mark_er"  data-action="click->favoritable#mark_js" ></i>
+
+                  <div class="mx-2 d-flex justify-content-end align-items-end mt-3"  >
+                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' if recipe.done? %>" <%= recipe.id %> style="color: gray " data-favoritable-target="markasdone"  data-action="click->favoritable#mark_js" ></i>
+                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' unless recipe.done? %>" <%= recipe.id %> style="color: green" data-favoritable-target="markedasdone"  data-action="click->favoritable#unmark_js" ></i>
                   </div>
               </div>
             </div>
@@ -51,23 +52,22 @@
                 <%# <div class="card-body"> %>
 
                   <div class="mx-2 pt-3 d-flex">
-                    <p class="border-end  pe-2">Dificulty:  <%= recipe.level_of_difficulty %></p>
+
                     <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end ">   <%= recipe.number_of_portions%></i></p>
                     <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
                   </div>
 
                   <div class="d-flex" >
                     <div class="">
-                      <p class="cardi-instruction"><%= raw recipe.instruction%></p>
+                      <div class="cardi-instruction"><%= raw recipe.instruction%></div>
                     </div>
                   </div>
               </div>
                 </div>
-                <div class="modal-footer">
-                <div class="mx-2 d-flex justify-content-center align-items-end text-end"  >
-                    <i class="fa-regular fa-circle-check icon-index " id="modal_mark_<%= recipe.id %>" style="color: <%= recipe.done ? 'rgb(99, 230, 190)' : 'rgb(187, 190, 195)' %>;" data-favoritable-target="mark_er"  data-action="click->favoritable#mark_js" ></i>
+                 <div class="mx-2 d-flex justify-content-end align-items-end mt-3"  >
+                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' if recipe.done? %>" <%= recipe.id %> style="color: gray " data-favoritable-target="markasdone"  data-action="click->favoritable#mark_js" ></i>
+                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' unless recipe.done? %>" <%= recipe.id %> style="color: green" data-favoritable-target="markedasdone"  data-action="click->favoritable#unmark_js" ></i>
                   </div>
-                </div>
               </div>
             </div>
           </div>
