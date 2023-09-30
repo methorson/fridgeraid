@@ -22,6 +22,7 @@
 .fridge-logo {
   width: 240px;
   height: 240px;
+  margin-bottom: 50%;
   border-radius: 50%;
   opacity: 0.8;
   box-shadow: 4px 6px #314235aa;
@@ -32,81 +33,64 @@
   margin-bottom: 10%;
 }
 
-.about-fridgeraid {
-  margin-top: 45px;
-
-  ul {
-    list-style-type: none;
-    font-size: 30px;
-    text-decoration: none;
-    font-family: "Actor";
-    color: #223026;
-
-    li {
-      margin-top: 10px;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px #D0F5BE;
-    }
-  }
+ul {
+  list-style-type: none;
+  font-size: 25px;
+  text-decoration: none;
+  font-family: "Actor";
+  color: $night;
 }
 
-.login-area {
-  .btn-signup {
-    display: inline-block;
-    height: 80px;
-    width: 280px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    padding-top: 10px;
-    border: none;
-    border-radius: 15px;
-    background-color: #FBFFDC;
-    text-decoration: none;
-    text-align: center;
-    font-size: 40px;
-    color: #809675;
-    font-weight: bolder;
-    font-family: "Indie Flower", sans-serif;
-    box-shadow: 4px 6px #757667;
-    transition: background-color 0.1s, transform 0.3s;
-  }
+.btn-signup {
+  display: inline-block;
+  height: 80px;
+  width: 280px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: $fr-green;
+  text-decoration: none;
+  text-align: center;
+  font-size: 40px;
+  color: $jet;
+  font-family: "Indie Flower", sans-serif;
+  box-shadow: 2px 4px #8eba99;
+  transition: background-color 0.1s, transform 0.3s;
+}
 
-  .btn-signup:hover {
-    background-color: #809675;
-    color: #D0F5BE;
-    height: 85px;
-    width: 285px;
-    font-size: 45px;
-  }
+.btn-signup:hover {
+  font-size: 43px;
+}
 
-  h1 {
-    font-size: 18px;
-    text-decoration: none;
-    font-family: "Imprima", sans-serif;
-    font-weight: lighter;
-    margin-top: 20px;
-    }
+.fa-arrow-right {
+  font-size: 25px;
+  color: jet;
+}
 
-  .btn-sign-in {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-bottom: 8px;
-    background-color: #809675;
-    color: #D0F5BE;
-    font-weight: bolder;
-    font-size: 25px;
-    text-decoration: none;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: "Indie Flower", sans-serif;
-    box-shadow: 4px 6px #596155;
-  }
+h1 {
+  font-size: 20px;
+  text-decoration: none;
+  font-family: "Imprima", sans-serif;
+  margin-top: 20px;
+}
 
-  .btn-sign-in:hover {
-    background-color: #FBFFDC;
-    color: #809675;
-    font-size: 28px;
-  }
+.btn-sign-in {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 8px;
+  color: $fr-green;
+  font-weight: bolder;
+  font-size: 45px;
+  text-decoration: none;
+  border: none;
+  border-radius: 20px;
+  font-family: "Indie Flower", sans-serif;
+  // box-shadow: 4px 6px #596155;
+}
 
+.btn-sign-in:hover {
+  color: $fr-green;
+  font-size: 48px;
 }
