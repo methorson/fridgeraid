@@ -1,9 +1,9 @@
 .sign-in-page {
   padding-top: 85px;
-  background-image: url('fruitlogin.jpg');
+  background-image: url('greenveg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: left;
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20%;
 }
 
 .signin-simple-form input[type="text"],
@@ -27,6 +28,13 @@
   border-radius: 5px;
   font-size: 22px;
   font-family: "Actor";
+}
+
+.signin-simple-form input[type="text"]:focus,
+.signin-simple-form input[type="password"]:focus {
+  outline: none;
+  border-color: #A8E6B7;
+  box-shadow: 0 0 5px #A8E6B7;
 }
 
 .signin-simple-form input::placeholder {
@@ -46,17 +54,16 @@
 }
 
 input.btn {
-  background-color: #A8E6B7;
-  color: #131313;
-  font-family: "Indie Flower", sans-serif;
-  font-size: 35px;
-  font-weight: bolder;
-  text-align: center;
+  height: 62px;
   width: 250px;
-  height: 60px;
   border: none;
-  border-radius: 5px;
-  box-shadow: 4px 6px #607e67;
+  border-radius: 15px;
+  background-color: $fr-green;
+  text-decoration: none;
+  font-size: 38px;
+  color: $jet;
+  font-family: "Indie Flower", sans-serif;
+  box-shadow: 2px 4px #8eba99;
 }
 
 input.btn:hover {
@@ -66,20 +73,15 @@ input.btn:hover {
 }
 
 .forgot-password-link {
-  margin-top: 30px;
-  background-color: #d9f9e1;
-  border-radius: 30px;
-  padding: 5px 10px;
-  box-shadow: 2px 4px #80aa8a;
+  margin-top: 20px;
 }
 
 .forgot-password-link-text {
-  color: #405b4f;
+  color: $night;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .forgot-password-link:hover {
-  background-color: #678a70;
-  box-shadow: 1px 2px #435949;
+  text-decoration: underline;
 }
