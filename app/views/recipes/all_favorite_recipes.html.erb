@@ -6,7 +6,7 @@
           params[:query],
           class: "form-control",
           placeholder: "Favorite Recipe",
-          data: { virtual_keyboard_target: 'search', action: "click->virtual-keyboard#toggleKeyboard" },
+          data: { virtual_keyboard_target: 'search', action: "click->virtual-keyboard#showKeyboard" },
           value: ""
         %>
         <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
@@ -17,7 +17,8 @@
     </div>
   </div>
 </div>
-<div class=" text-center  mt-4" >
+
+<div class=" container text-center  mt-4" >
     <h1 class="color-green-bk"> Your favorite recipes:</h1>
   <div class=" my-4 div-color">
     <% if @favorite_recipes.empty? %>
