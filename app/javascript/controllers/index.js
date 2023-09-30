@@ -7,6 +7,9 @@ import { application } from "./application"
 import DeleteIngredientsController from "./delete_ingredients_controller"
 application.register("delete-ingredients", DeleteIngredientsController)
 
+import DestroyController from "./destroy_controller"
+application.register("destroy", DestroyController)
+
 import FavoritableController from "./favoritable_controller"
 application.register("favoritable", FavoritableController)
 

@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
 
 
-
   get "recipes/:recipe_id/like_rails", to: "recipes#like_rails", as: :like
   get "recipes/:recipe_id/unlike_rails", to: "recipes#unlike_rails", as: :unlike
   get "recipes/:recipe_id/mark", to: "recipes#mark", as: :mark
