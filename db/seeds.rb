@@ -38,12 +38,12 @@ ana = User.create!(
 puts "Users ( x )"
 
 categories = {
-  "Protein" => ['chicken','beef','salmon','tofu','Lentils','Shrimp','eggs','Turkey','Pork','Eggs'],
+  "Protein" => ['Chicken','Beef','Salmon','Tofu','Lentils','Shrimp','Turkey','Pork','Eggs'],
   "Carbs & Grains" => ['Bread','Rice','Couscous','Pasta','Barley','Quinoa','Flour','Corn Flour'],
   "Vegetables" => ['Broccoli','Spinach','Carrots','Bell pepper','Zucchini','Tomatoes','Kale','Cauliflower','Asparagus','Green beans'],
   "Fruit" => ['Apples','Bananas','Oranges','Berries','Grapes','Mangoes','Pineapple','Peaches','Strawberries','Watermelon'],
   "Condiments" => ['Olive oil','Salt','Pepper','Garlic','Honey','Soy sauce','Vinegar','Ketchup','Mustard','Mayonnaise'],
-  "Dairy Items" => ['milk','cheese','Yogurt','Butter','Double Cream','Cottage cheese','Sour cream','Parmesan','Cream cheese']
+  "Dairy Items" => ['Milk','Cheese','Yogurt','Butter','Double Cream','Cottage Cheese','Sour cream','Parmesan','Cream cheese']
 }
 
 
