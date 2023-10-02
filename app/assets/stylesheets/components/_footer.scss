@@ -16,6 +16,7 @@
   width: 45px;
 }
 
+//class for font awesome icons
 .fa-black{
   color:$black;
   background-color: white; ;
@@ -26,6 +27,7 @@
   padding: 6px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* You can adjust the values as needed */
 }
+
 @media (min-width:746px){
   .footer{
     position:static;
