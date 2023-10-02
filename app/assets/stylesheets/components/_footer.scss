@@ -16,7 +16,7 @@
   width: 45px;
 }
 
-.fa-color{
+.fa-black{
   color:$black;
 }
 @media (min-width:746px){
@@ -26,6 +26,9 @@
     left:none;
     right:none;
   }
+}
+.fa-red{
+  color:red;
 }
 
 // hi
