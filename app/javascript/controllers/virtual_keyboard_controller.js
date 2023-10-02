@@ -1,42 +1,50 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 import Keyboard from 'simple-keyboard';
-// import 'simple-keyboard/build/css/index.css';
-// import layout from 'simple-keyboard-layouts/build/layouts/japanese';
 
 export default class extends Controller {
-  static targets = ['search', 'keyboard']
+  static targets = ['search', 'keyboard'];
 
   connect() {
     console.log('connected');
     this.keyboard = new Keyboard({
       onChange: input => this.onChange(input),
-      onKeyPress: button => this.onKeyUp(button),
-      // ...layout
+      onKeyPress: button => this.onKeyPress(button),
     });
 
-    // console.log('test', this.keyboard);
+    // Add an event listener for the "keyboard.show" event
+    this.keyboardTarget.addEventListener('keyboard.show', () => {
+      this.onShow();
+    });
   }
 
-  toggleKeyboard() {
-    console.log('Toggle keyboard called');
+  onShow() {
+    // Call separate methods for showing the keyboard and applying the blur effect
+    this.showKeyboard();
+    this.applyBlurEffect();
+  }
+
+  showKeyboard() {
     const keyboard = this.keyboardTarget;
     console.log('Keyboard target:', keyboard);
     keyboard.classList.remove('d-none');
+    this.applyBlurEffect();
+  }
+
+  applyBlurEffect() {
+    const container = document.querySelector('.container'); // Adjust the selector accordingly
+    container.style.filter = 'blur(5px)';
   }
 
   onChange(input) {
     console.log("search", this.searchTarget.value);
-
     if (this.searchTarget.value) {
       this.searchTarget.value = input;
       console.log("Input changed", input);
     }
   }
 
-  openKeyboard() {
-    this.keyboardTarget.classList.remove("d-none");
+  onKeyPress(button) {
+    console.log('Button pressed', button);
+    // Add any keyboard-related logic here
   }
-  // onKeyPress(button) {
-  //   console.log('Button pressed', button);
-  // }
 }
