@@ -68,9 +68,9 @@ carbonara = Recipe.create(
 carbonara.photo.attach(io: file, filename: "carbonara.jpg", content_type: "image/jpeg")
 carbonara.save
 
-cheese = Ingredient.find_by(name: "cheese")
+cheese = Ingredient.find_by(name: "Cheese")
 RecipeIngredient.create!(ingredient: cheese, recipe: carbonara)
-eggs = Ingredient.find_by(name: "eggs")
+eggs = Ingredient.find_by(name: "Eggs")
 RecipeIngredient.create!(ingredient: eggs, recipe: carbonara)
 
 
@@ -171,6 +171,8 @@ puts "Recipes( x )"
 fridge_list = FridgeList.create!(user: marina)
 fridge_list = FridgeList.create!(user: maria)
 fridge_list = FridgeList.create!(user: ana)
+
+puts "Users' Fridgelists ( x )"
 
 # Ingredient.all.each do |ingredient|
 #   fridge_list_ingredient = FridgeListIngredient.create!(fridge_list: fridge_list, ingredient: ingredient)
