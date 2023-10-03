@@ -1,77 +1,71 @@
 <div class=" text-center mt-4">
-    <h1 class="color-green-bk"> Recipes you've made:</h1>
-  </div>
-  <div class=" my-4 div-color">
+  <h1 class="color-green-bk"> Recipes you've made:</h1>
+</div>
+<div class=" my-4 div-color">
 
-    <% @done_recipes.each do |recipe| %>
+  <% @done_recipes.each do |recipe| %>
     <div  data-controller="favoritable"  data-favoritable-mark-path-value="<%= mark_path(recipe.id) %>"  data-favoritable-unmark-path-value="<%= unmark_path(recipe.id) %>" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
       <div class="text-center">
-          <div class="my-3 pb-3 actual-card border-bottom"  style="">
-            <div class="row g-0 ">
-              <div class="col-md-4 " data-bs-toggle="modal" data-bs-target="#exampleModal<%= recipe.id %>">
-                <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
-                <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 200px;object-fit: cover;"  %>
+        <div class="my-3 pb-3 actual-card border-bottom"  style="">
+          <div class="row g-0 ">
+            <div class="col-md-4 " data-bs-toggle="modal" data-bs-target="#exampleModal<%= recipe.id %>">
+              <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 200px;object-fit: cover;"  %>
+            </div>
+            <div class="col-md-6">
+              <h5 class="card-title mx-2 my-2 color-title"><%= recipe.name.capitalize%></h5>
+              <div class="mx-2 d-flex justify-content-center">
+                <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
+                <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time%></i>min</p>
               </div>
-              <div class="col-md-6">
-                <%# <div class="card-body"> %>
-                  <h5 class="card-title mx-2 my-2 color-title"><%= recipe.name.capitalize%></h5>
-                  <div class="mx-2 d-flex justify-content-center">
-                    <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end">   <%= recipe.number_of_portions%></i></p>
-                    <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time%></i>min</p>
-                  </div>
 
-                  <div class="d-flex" >
-                    <div class="cardib">
-                      <p class="cardib-text"><%= raw recipe.description.first(200)%>...</p>
-                    </div>
-                  </div>
+              <div class="d-flex" >
+                <div class="cardib">
+                  <p class="cardib-text"><%= raw recipe.description.first(200)%>...</p>
+                </div>
+              </div>
 
-
-                  <div class="mx-2 d-flex justify-content-end align-items-end mt-3"  >
-                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' if recipe.done? %>" <%= recipe.id %> style="color: gray " data-favoritable-target="markasdone"  data-action="click->favoritable#mark_js" ></i>
-                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' unless recipe.done? %>" <%= recipe.id %> style="color: green" data-favoritable-target="markedasdone"  data-action="click->favoritable#unmark_js" ></i>
-                  </div>
+              <div class="mx-2 d-flex justify-content-end align-items-end mt-3"  >
+                <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' if recipe.done? %>" <%= recipe.id %> style="color: gray " data-favoritable-target="markasdone"  data-action="click->favoritable#mark_js" ></i>
+                <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' unless recipe.done? %>" <%= recipe.id %> style="color: green" data-favoritable-target="markedasdone"  data-action="click->favoritable#unmark_js" ></i>
               </div>
             </div>
           </div>
-
-          <!-- Modal -->
-          <div class="modal fade"  id="exampleModal<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="height:95vh">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel"><%= recipe.name.capitalize%></h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="col-md-4 ">
-                <%# <img src="..." class="img-fluid rounded-start" alt="..."> %>
-                <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 200px;object-fit: cover;"  %>
-              </div>
-              <div class="col-md-6">
-                <%# <div class="card-body"> %>
-
-                  <div class="mx-2 pt-3 d-flex">
-
-                    <p><i class="mx-2 pe-2 fa-solid fa-user-group border-end ">   <%= recipe.number_of_portions%></i></p>
-                    <p><i class="mx-2 fa-regular fa-clock">   <%= recipe.preparation_time %></i></p>
-                  </div>
-
-                  <div class="d-flex" >
-                    <div class="">
-                      <div class="cardi-instruction"><%= raw recipe.instruction%></div>
-                    </div>
-                  </div>
-              </div>
-                </div>
-                 <div class="mx-2 d-flex justify-content-end align-items-end mt-3"  >
-                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' if recipe.done? %>" <%= recipe.id %> style="color: gray " data-favoritable-target="markasdone"  data-action="click->favoritable#mark_js" ></i>
-                    <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' unless recipe.done? %>" <%= recipe.id %> style="color: green" data-favoritable-target="markedasdone"  data-action="click->favoritable#unmark_js" ></i>
-                  </div>
-              </div>
-            </div>
-          </div>
+        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade"  id="exampleModal<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: -45px;">
+      <div class="modal-dialog modal-dialog-centered sizing">
+        <div class="modal-content radius-card " style="border-bottom-left-radius: 70px; border-bottom-right-radius: 70px;">
+          <div class="modal-header modal-img-card">
+            <i class=" ml-10 fa-solid fa-circle-left" style="color: #769765" data-bs-dismiss="modal"></i>
+            <div class="background-banner">
+              <%= cl_image_tag recipe.photo.key, class:"actual-pic modal-pic ", alt:"Banner", crop: :fill  %>
+            </div>
+          </div>
+          <div class="card card-modal">
+              <div class="modal-body ">
+                <h1 class="modal-title bold-title" id="exampleModalLabel" style="color: white"><%= recipe.name.capitalize%></h1>
+                <hr style="color: white">
+                <div class="instructions">
+                  <div class="cardi-instruction" style="color: white"><%= raw recipe.instruction %></div>
+                </div>
+              </div>
+            <div class="d-flex justify-content-space-between mt-3"  >
+              <div class="d-flex" >
+                <div class=" justify-content-center icons-clock">
+                  <p><i class=" fa-solid fa-user-group " style="color: white" ><%= recipe.number_of_portions%></i></p>
+                  <p><i class=" fa-regular fa-clock" style="color: white" ><%= recipe.preparation_time %></i></p>
+                </div>
+              </div>
+              <div class="done">
+                <i class="fa-regular fa-circle-check icon-index <%= 'd-none' if recipe.done? %>" <%= recipe.id %> style="color: gray " data-favoritable-target="markasdone"  data-action="click->favoritable#mark_js" ></i>
+                <i class="fa-regular fa-circle-check icon-index <%= 'd-none' unless recipe.done? %>" <%= recipe.id %> style="color: white; margin-bottom: 13px;" data-favoritable-target="markedasdone"  data-action="click->favoritable#unmark_js" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

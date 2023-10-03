@@ -68,10 +68,10 @@ carbonara = Recipe.create(
 carbonara.photo.attach(io: file, filename: "carbonara.jpg", content_type: "image/jpeg")
 carbonara.save
 
-cheese = Ingredient.find_by(name: "cheese")
-RecipeIngredient.create!(ingredient: cheese, recipe: carbonara)
-eggs = Ingredient.find_by(name: "eggs")
-RecipeIngredient.create!(ingredient: eggs, recipe: carbonara)
+# cheese = Ingredient.find_by(name: "cheese")
+# RecipeIngredient.create!(ingredient: cheese, recipe: carbonara)
+# eggs = Ingredient.find_by(name: "eggs")
+# RecipeIngredient.create!(ingredient: eggs, recipe: carbonara)
 
 
 file = URI.open("https://www.thespruceeats.com/thmb/_EqZNGmAmcn1dWa2dzYL1DIFj60=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ultimate-chicken-stir-fry-694919-hero-01-5c280c5446e0fb0001fd7aa9.jpg")
