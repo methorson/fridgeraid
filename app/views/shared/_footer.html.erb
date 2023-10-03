@@ -1,7 +1,7 @@
 <div class="px-4 footer d-flex justify-content-between ">
   <%# <a href=" /fridge_lists/:id" class=" d-flex align-items-center text-decoration-none "><i class="fa-solid fa-carrot fa-color"></i></a> %>
-  <a href="<%= all_done_path %>" class=" d-flex align-items-center text-decoration-none "><i class="fa-regular fa-square-check <%= request.path == '/recipes/all_done_recipes' ? 'fa-red' : 'fa-black' %> "></i></a>
   <%= link_to "<i class='fa-solid fa-user fa-color'></i>".html_safe, destroy_user_session_path, class: "dropdown-item d-flex align-items-center text-decoration-none w-auto", data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to logout?' } %>
+  <a href="<%= all_done_path %>" class=" d-flex align-items-center text-decoration-none "><i class="fa-regular fa-square-check <%= request.path == '/recipes/all_done_recipes' ? 'fa-red' : 'fa-black' %> "></i></a>
   <%# <img id="icon-footer"  class="" src="https://res.cloudinary.com/dclozlnfy/image/upload/v1695149130/development/Screenshot_2023-09-19_at_20.45.11_exfuez.png" alt=""> %>
   <a href=" /fridge_lists/:id"><img id="icon-footer" src="https://res.cloudinary.com/dclozlnfy/image/upload/v1695149130/development/Screenshot_2023-09-19_at_20.45.11_exfuez.png" alt="fridge logo"></a>
   <a href="<%= favorites_path %>" class=" d-flex align-items-center text-decoration-none" ><i class="fa-solid fa-heart <%= request.path == '/favorites' ? 'fa-red' : 'fa-black' %> "></i></a>
