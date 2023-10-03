@@ -1,5 +1,5 @@
 .sign-in-page {
-  padding-top: 85px;
+  padding-top: 40px;
   background-image: url('greenveg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -84,4 +84,9 @@ input.btn:hover {
 
 .forgot-password-link:hover {
   text-decoration: underline;
+}
+
+.btn-outline-success {
+  margin-top: 30px;
+  color: #000000;
 }
