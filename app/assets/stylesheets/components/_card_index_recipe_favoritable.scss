@@ -4,23 +4,86 @@
   padding:10px;
 }
 
-.margin-bottom{
-  margin-bottom: 50px;
+.color-purple-bk{
+  background-color: #e2cde6;
+  width:100%;
+  padding:10px;
+}
+
+.card-whole-index{
+  border-radius: 2%;
+  background-color: $fr-green;
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0; /* Border color and thickness */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+}
+
+.card-whole-fav{
+  border-radius: 2%;
+  background-color: #e2cde6;
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0; /* Border color and thickness */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+}
+
+.actual-pic {
+  border-top-left-radius: 2%;
+  border-top-right-radius: 2%;
 }
 
 .icon-index{
   font-size: 30px;
+  padding-bottom: 4px;
 }
-.div-color{
-  background-color:white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Horizontal offset, Vertical offset, Blur radius, Spread radius, Color */
+.iconico{
+  font-size: 19px;
+
 }
+.p-icon{
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  margin-right: 10px;
+  background-color: #b284c2;;
+}
+.p-icon-fav{
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  margin-right: 10px;
+  background-color: #c37482;
+}
+
+.fa-info-circle{
+  font-size: 30px;
+}
+
 .cardib {
   width: 100%; /* You can adjust the width as needed */
-  padding:10px; /* Optional: Add padding to the card */
-  height: 150px;
-  overflow: auto; /* Prevent content from overflowing the card */
+  padding-top:10px; /* Optional: Add padding to the card */
+  padding-left:10px;
+  padding-right:10px;
+  height: 145px;
+  overflow: hidden;
 }
+.cardib-text{
+  font-size: 18px;
+  // font-weight: bold;
+  color: $black;
+  text-align: left;
+  // padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 .cardi-instruction{
   width: 100%; /* You can adjust the width as needed */
   margin: 0;
@@ -32,6 +95,19 @@
   padding:10px; /* Optional: Add padding to the card */
   height: 150px;
   overflow: auto;
+}
+
+.name-recipe{
+  font-size: 25px;
+  font-weight: bold;
+  color: $black;
+  text-align: left;
+  // margin-bottom: -5px;
+  padding-top: 8px;
+
+}
+.card-body{
+  padding-top: 0px;
 }
 
 // .cardib-text {

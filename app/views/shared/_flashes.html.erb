@@ -1,14 +1,25 @@
 <% if notice %>
-  <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
+  <div id="infoAlert" class="alert alert-success alert-dismissible fade show m-1" role="alert">
     <%= notice %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
+  <script>
+    setTimeout(function() {
+      document.getElementById("infoAlert").classList.add("fade-out");
+    }, 3000); // 3000 milliseconds (3 seconds) timer
+  </script>
 <% end %>
+
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+  <div id="warningAlert" class="alert alert-danger alert-dismissible fade show m-1" role="alert">
     <%= alert %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
+  <script>
+    setTimeout(function() {
+      document.getElementById("warningAlert").classList.add("fade-out");
+    }, 3000); // 3000 milliseconds (3 seconds) timer
+  </script>
 <% end %>

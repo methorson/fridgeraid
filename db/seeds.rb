@@ -74,6 +74,7 @@ carbonara.save
 # RecipeIngredient.create!(ingredient: eggs, recipe: carbonara)
 
 
+
 file = URI.open("https://www.thespruceeats.com/thmb/_EqZNGmAmcn1dWa2dzYL1DIFj60=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/ultimate-chicken-stir-fry-694919-hero-01-5c280c5446e0fb0001fd7aa9.jpg")
 chicken = Recipe.create!(
   name: "Chicken Stir-Fry",
@@ -171,6 +172,8 @@ puts "Recipes( x )"
 fridge_list = FridgeList.create!(user: marina)
 fridge_list = FridgeList.create!(user: maria)
 fridge_list = FridgeList.create!(user: ana)
+
+puts "Users' Fridgelists ( x )"
 
 # Ingredient.all.each do |ingredient|
 #   fridge_list_ingredient = FridgeListIngredient.create!(fridge_list: fridge_list, ingredient: ingredient)
