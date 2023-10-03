@@ -2,17 +2,42 @@
   background-color: $fr-green;
   width:100%;
   padding:10px;
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: bold;
+
 }
 
 .color-purple-bk{
   background-color: #e2cde6;
   width:100%;
   padding:10px;
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.color-yellow-bk{
+  background-color: #f5e5bb;
+  width:100%;
+  padding:10px;
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .card-whole-index{
   border-radius: 2%;
   background-color: $fr-green;
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0; /* Border color and thickness */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+}
+
+.card-whole-saved{
+  border-radius: 2%;
+  background-color: #f5e5bb;
   margin-bottom: 30px;
   border: 1px solid #e0e0e0; /* Border color and thickness */
   border-radius: 8px; /* Rounded corners */
