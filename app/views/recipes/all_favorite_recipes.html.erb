@@ -61,13 +61,23 @@
           </div>
              <!-- Modal -->
 
-          <div class="modal fade"  id="exampleModal<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: -45px;">
-            <div class="modal-dialog modal-dialog-centered sizing">
-              <div class="modal-content radius-card " style="border-bottom-left-radius: 77px; border-bottom-right-radius: 70px;">
-                <div class="modal-header modal-img-card">
-                  <i class=" ml-10 fa-solid fa-circle-left" style="color: #769765" data-bs-dismiss="modal"></i>
-                  <div class="background-banner">
-                    <%= cl_image_tag recipe.photo.key, class:"actual-pic modal-pic ", alt:"Banner", crop: :fill  %>
+        </div>
+        <%# Trying to push this part.  %>
+        <!-- Modal -->
+        <div class="modal fade"  id="exampleModal<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: -45px;">
+          <div class="modal-dialog modal-dialog-centered sizing">
+            <div class="modal-content radius-card " style="border-bottom-left-radius: 77px; border-bottom-right-radius: 70px;">
+              <div class="modal-header modal-img-card">
+                <i class=" ml-10 fa-solid fa-circle-left" style="color: #769765" data-bs-dismiss="modal"></i>
+                <div class="background-banner">
+                  <%= cl_image_tag recipe.photo.key, class:"actual-pic modal-pic ", alt:"Banner", crop: :fill  %>
+                </div>
+              </div>
+              <div class="card card-modal">
+                <div class="modal-body ">
+                  <h1 class="modal-title bold-title" id="exampleModalLabel" style="color: white"><%= recipe.name.capitalize%></h1>
+                  <hr style="color: white">
+                  <div class="instructions">
                   </div>
                 </div>
                 <div class="card card-modal">
