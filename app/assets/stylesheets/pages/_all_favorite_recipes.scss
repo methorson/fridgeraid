@@ -19,3 +19,108 @@
   padding: 20px;
   z-index: 100;
 }
+
+
+
+.h1{
+  // margin-right: 179px;
+  position: sticky;
+  font-weight: 1000;
+  justify-content: center;
+}
+
+.modal-img-card {
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  margin-top: -20px;
+  z-index: 1;
+}
+
+.background-banner{
+  padding: 0%;
+}
+
+.fa-user-group{
+  font-size: 16px;
+  margin-left: 7px;
+}
+
+.fa-clock{
+  font-size: 16px;
+  margin-left: 16px;
+}
+
+
+.fa-circle-left {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  z-index: 3;
+  font-size: 28px;
+}
+
+// .fa-heart{
+//   position: absolute;
+//   right: 10px;
+//   z-index: 3;
+//   font-size: 28px;
+// }
+
+.modal-pic{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  border-radius: 14px;
+  z-index: 2;
+  top: 20px;
+}
+
+.card-modal-favorite{
+  border-radius: 10px;
+  background-color: #d7b2df;
+  margin-top: -40px;
+  z-index: 2;
+  border-top-right-radius: 70px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 77px;
+  border-bottom-right-radius: 20px;
+}
+
+// .modal-title{
+//   margin-left: 115px;
+// }
+
+.bold-title{
+  // font-family: "Indie Flower";
+  font-weight: bolder;
+  margin-left: 19px;
+  margin-top: 8px;
+  position: sticky;
+}
+
+// .title-clock{
+//   justify-content: space-between;
+// }
+
+.icons-clock{
+  display: flex;
+  margin-left: 35px;
+  margin-top: -8px;
+}
+
+.sizing{
+  max-width: 97%;
+  width: 100%;
+  top: -72px;
+}
+.done{
+  margin-left: 198px;
+}
+
+.modal.fade.show {
+  backdrop-filter: blur(6px);
+  background: transparent;
+  -webkit-backdrop-filter: blur(6px);
+}

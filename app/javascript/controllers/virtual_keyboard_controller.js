@@ -31,8 +31,12 @@ export default class extends Controller {
   }
 
   applyBlurEffect() {
-    const container = document.querySelector('.container'); // Adjust the selector accordingly
+    const container = document.querySelector('#blurContainer'); // Adjust the selector accordingly
     container.style.filter = 'blur(5px)';
+    container.addEventListener("click", () => {
+      container.style.filter = ""
+      this.keyboardTarget.classList.add('d-none');
+    })
   }
 
   onChange(input) {
