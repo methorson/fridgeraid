@@ -41,31 +41,33 @@
             <div class="modal-dialog modal-dialog-centered sizing">
               <div class="modal-content radius-card " style="border-bottom-left-radius: 77px; border-bottom-right-radius: 70px;">
                 <div class="modal-header modal-img-card">
-                  <i class=" ml-10 fa-solid fa-circle-left" style="color: #769765" data-bs-dismiss="modal"></i>
+                  <div class="heartt-arrow">
+                    <i class=" ml-10 fa-solid fa-circle-left" style="color: #EFD595" data-bs-dismiss="modal"></i>
+                    <i class="fa-regular fa-heart icon-index  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like_js"></i>
+                    <i class="fa-solid fa-heart icon-index  <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600; margin-left: 338px;" data-action="click->favoritable#unlike_js"></i>
+                  </div>
                   <div class="background-banner">
                     <%= cl_image_tag recipe.photo.key, class:"actual-pic modal-pic ", alt:"Banner", crop: :fill  %>
                   </div>
                 </div>
                 <div class="card card-modal">
                     <div class="modal-body ">
-                      <h1 class="modal-title bold-title" id="exampleModalLabel" style="color: white"><%= recipe.name.capitalize%></h1>
-                      <hr style="color: white">
+                      <h1 class="modal-title bold-title" id="exampleModalLabel" style="color: black"><%= recipe.name.capitalize%></h1>
+                      <hr style="color: black">
                       <div class="instructions">
-                        <div class="cardi-instruction" style="color: white"><%= raw recipe.instruction %></div>
+                        <div class="cardi-instruction" style="color: black"><%= raw recipe.instruction %></div>
                       </div>
                     </div>
                   <div class="d-flex justify-content-space-between mt-3"  >
                     <div class="d-flex" >
                       <div class=" justify-content-center icons-clock">
-                        <p><i class=" fa-solid fa-user-group " style="color: white" ><%= recipe.number_of_portions%></i></p>
-                        <p><i class=" fa-regular fa-clock" style="color: white" ><%= recipe.preparation_time %></i></p>
+                        <p><i class=" fa-solid fa-user-group " style="color:black" ><%= recipe.number_of_portions%></i></p>
+                        <p><i class=" fa-regular fa-clock" style="color:black" ><%= recipe.preparation_time %></i></p>
                       </div>
                     </div>
                     <div class="done">
                       <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' if recipe.done? %>" <%= recipe.id %> style="color: gray " data-favoritable-target="markasdone"  data-action="click->favoritable#mark_js" ></i>
                       <i class="fa-regular fa-circle-check icon-index px-1 <%= 'd-none' unless recipe.done? %>" <%= recipe.id %> style="color: green" data-favoritable-target="markedasdone"  data-action="click->favoritable#unmark_js" ></i>
-                      <i class="fa-solid fa-heart icon-index  <%= 'd-none' unless recipe.favorited_by?(current_user) %>"  data-favoritable-target="liked" style="color: #ff2600;" data-action="click->favoritable#unlike_js"></i>
-                      <i class="fa-regular fa-heart icon-index  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like_js"></i>
                     </div>
                   </div>
                 </div>

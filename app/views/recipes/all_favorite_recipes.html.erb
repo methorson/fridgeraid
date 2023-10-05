@@ -1,47 +1,44 @@
 
-<div>
-  <div class="text-center" >
-    <h1 class="color-purple-bk"> Your favorite recipes:</h1>
-  </div>
-  <div data-controller='virtual-keyboard' class="search">
-  <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
-      <%= form_with url: favorites_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Favorite Recipe",
-          data: { virtual_keyboard_target: 'search', action: "click->virtual-keyboard#toggleKeyboard" },
-          value: ""
-        %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      <% end %>
+  <div>
+    <div class="text-center" >
+      <h1 class="color-purple-bk"> Your favorite recipes:</h1>
     </div>
-    <div class="keyboard-container d-none" data-virtual-keyboard-target='keyboard'>
-      <div class="simple-keyboard"></div>
+    <div data-controller='virtual-keyboard' class="search">
+      <div class="row justify-content-center">
+        <div class="col-sm-8 my-3">
+          <%= form_with url: favorites_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Favorite Recipe",
+              data: { virtual_keyboard_target: 'search', action: "click->virtual-keyboard#showKeyboard" },
+              value: ""
+            %>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="keyboard-container d-none" data-virtual-keyboard-target='keyboard'>
+          <div class="simple-keyboard"></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<div class="my-4 mx-4">
+<div class="my-4 mx-4" id="blurContainer">
   <% if @favorite_recipes.empty? %>
     <h2>Recipe not found</h2>
   <% else %>
     <% @favorite_recipes.each do |recipe| %>
-      <div  data-controller="favoritable"  data-favoritable-mark-path-value="<%= mark_path(recipe.id) %>"  data-favoritable-unmark-path-value="<%= unmark_path(recipe.id) %>" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
-        <div class="card-whole-fav mt-3">
-          <div class="position-relative">
-            <div class="col-md-4" data-bs-toggle="modal" data-bs-target="#exampleModal<%= recipe.id %>">
-              <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 170px;object-fit: cover;"  %>
-            </div>
-            <div class="position-absolute top-0 start-0 p-2">
-              <i class="fas fa-info-circle"></i>
-            </div>
+      <div class="card-whole-fav mt-3" data-controller="favoritable"  data-favoritable-mark-path-value="<%= mark_path(recipe.id) %>"  data-favoritable-unmark-path-value="<%= unmark_path(recipe.id) %>" data-favoritable-like-path-value="<%= like_path(recipe.id) %>" data-favoritable-unlike-path-value="<%= unlike_path(recipe.id) %>">
+        <div class="position-relative">
+          <div class="col-md-4" data-bs-toggle="modal" data-bs-target="#exampleModal<%= recipe.id %>">
+            <%= cl_image_tag recipe.photo.key, class:"d-block actual-pic ", alt:"Poster", crop: :fill, style:" width: 100%; height: 170px;object-fit: cover;"  %>
+          </div>
+          <div class="position-absolute top-0 start-0 p-2">
+            <i class="fas fa-info-circle"></i>
           </div>
         </div>
         <div class="card-body">
-          <%# <div class="mx-2 d-flex justify-content-center"> %>
-            <h5 class="mx-2 my-2 name-recipe"><%= recipe.name.capitalize%></h5>
-          <%# </div> %>
+          <h5 class="mx-2 my-2 name-recipe"><%= recipe.name.capitalize%></h5>
           <div class="mx-2 d-flex justify-content-end">
             <p class="p-icon-fav "><i class="mx-2 pe-2 fa-solid fa-user-group iconico ">   <%= recipe.number_of_portions%></i></p>
             <p class="p-icon-fav "><i class=" fa-regular fa-clock iconico ">   <%= recipe.preparation_time%></i>m</p>
@@ -57,38 +54,30 @@
           <i class="fa-regular fa-heart icon-index  <%= 'd-none' if recipe.favorited_by?(current_user) %>" data-favoritable-target="unliked"  style="color: #ff2600;" data-action="click->favoritable#like_js"></i>
         </div>
       </div>
-            <!-- Modal -->
-
-      </div>
       <%# Trying to push this part.  %>
       <!-- Modal -->
       <div class="modal fade"  id="exampleModal<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: -45px;">
         <div class="modal-dialog modal-dialog-centered sizing">
           <div class="modal-content radius-card " style="border-bottom-left-radius: 77px; border-bottom-right-radius: 70px;">
             <div class="modal-header modal-img-card">
-              <i class=" ml-10 fa-solid fa-circle-left" style="color: #769765" data-bs-dismiss="modal"></i>
+              <i class=" ml-10 fa-solid fa-circle-left" style="color: #e2cde6" data-bs-dismiss="modal"></i>
               <div class="background-banner">
                 <%= cl_image_tag recipe.photo.key, class:"actual-pic modal-pic ", alt:"Banner", crop: :fill  %>
               </div>
             </div>
-            <div class="card card-modal">
-              <div class="modal-body ">
-                <h1 class="modal-title bold-title" id="exampleModalLabel" style="color: white"><%= recipe.name.capitalize%></h1>
-                <hr style="color: white">
-              </div>
-              <div class="card card-modal">
-                  <div class="modal-body ">
-                    <h1 class="modal-title bold-title" id="exampleModalLabel" style="color: white"><%= recipe.name.capitalize%></h1>
-                    <hr style="color: white">
-                    <div class="instructions">
-                      <div class="cardi-instruction" style="color: white"><%= raw recipe.instruction %></div>
-                    </div>
+            <div class="card card-modal-favorite">
+                <div class="modal-body ">
+                  <h1 class="modal-title bold-title" id="exampleModalLabel" style="color:black"><%= recipe.name.capitalize%></h1>
+                  <hr style="color:black">
+                  <div class="instructions">
+                    <div class="cardi-instruction" style="color:black"><%= raw recipe.instruction %></div>
                   </div>
+                </div>
                 <div class="d-flex justify-content-space-between mt-3"  >
                   <div class="d-flex" >
                     <div class=" justify-content-center icons-clock">
-                      <p><i class=" fa-solid fa-user-group " style="color: white" ><%= recipe.number_of_portions%></i></p>
-                      <p><i class=" fa-regular fa-clock" style="color: white" ><%= recipe.preparation_time %></i></p>
+                      <p><i class=" fa-solid fa-user-group " style="color:black" ><%= recipe.number_of_portions%></i></p>
+                      <p><i class=" fa-regular fa-clock" style="color:black" ><%= recipe.preparation_time %></i></p>
                     </div>
                   </div>
                   <div class="done">

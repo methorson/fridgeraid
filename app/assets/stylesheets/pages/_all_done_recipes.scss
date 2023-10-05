@@ -31,12 +31,19 @@
 
 
 .fa-circle-left {
-  position: absolute;
-  top: 11px;
   left: 10px;
-  z-index: 3;
-  font-size: 28px;
+  top: 3px;
 }
+
+.heartt-arrow {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 9px;
+  z-index: 3;
+  // font-size: 28px;
+}
+
 .modal-pic{
   width: 100%;
   height: 100%;
@@ -49,7 +56,7 @@
 
 .card-modal{
   border-radius: 10px;
-  background-color: #9abe88;
+  background-color: #f5d890;
   margin-top: -40px;
   z-index: 2;
   border-top-right-radius: 70px;
